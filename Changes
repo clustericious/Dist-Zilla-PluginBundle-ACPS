@@ -2,6 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.02      2012-07-25 12:01:01 America/New_York
+
 0.02      2012-07-25 11:57:01 America/New_York
   - added TODO
 
