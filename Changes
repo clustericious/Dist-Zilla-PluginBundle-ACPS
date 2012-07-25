@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.02      2012-07-25 12:39:04 America/New_York
   - self hosting
   - remove git from bundle
   - automatically create remote public
