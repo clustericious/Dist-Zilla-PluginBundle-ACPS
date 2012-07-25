@@ -41,6 +41,16 @@ __END__
 
 Dist::Zilla::Plugin::ACPS::Release - release plugin for ACPS
 
+=head1 DESCRIPTION
+
+Plugin for Dist::Zilla release hooks for ACPS.  For now this
+only checks to ensure that the current version does not 
+already have a tag.  If you get an error like this:
+
+ there is already a tag for this version: 0.1
+
+then bump the version in dist.ini and run dzil release again.
+
 =head1 AUTHOR
 
 Graham Ollis <gollis@sesda2.com>

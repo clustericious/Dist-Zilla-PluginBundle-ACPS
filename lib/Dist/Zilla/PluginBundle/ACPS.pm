@@ -37,6 +37,14 @@ sub configure {
     AutoPrereqs
     OurPkgVersion
   ));
+
+  $self->add_bundle(
+    '@Git' => {
+      push_to     => 'public',
+      tag_format  => '%v',
+      tag_message => 'version %v',
+    },
+  );
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -51,100 +59,32 @@ Dist::Zilla::PluginBundle::ACPS - the basic plugins to maintain and release ACPS
 
 =head1 DESCRIPTION
 
-This plugin is meant to bea basic "first step" bundle for ACPS.  It includes
-the following plugins with their default configuration:
+Plugin bundle for creating and maintaining Perl distributions for ACPS.
+It is equivalent to this:
 
-=over 4
-
-=item *
-
-L<Dist::Zilla::Plugin::GatherDir>
-
-=item *
-
-L<Dist::Zilla::Plugin::PruneCruft>
-
-=item *
-
-L<Dist::Zilla::Plugin::ManifestSkip>
-
-=item *
-
-L<Dist::Zilla::Plugin::MetaYAML>
-
-=item *
-
-L<Dist::Zilla::Plugin::MetaJSON>
-
-=item *
-
-L<Dist::Zilla::Plugin::License>
-
-=item *
-
-L<Dist::Zilla::Plugin::Readme>
-
-=item *
-
-L<Dist::Zilla::Plugin::ExtraTests>
-
-=item *
-
-L<Dist::Zilla::Plugin::ExecDir>
-
-=item *
-
-L<Dist::Zilla::Plugin::ShareDir>
-
-=item *
-
-L<Dist::Zilla::Plugin::ModuleBuild>
-
-=item *
-
-L<Dist::Zilla::Plugin::MakeMaker>
-
-=item *
-
-L<Dist::Zilla::Plugin::Manifest>
-
-=item *
-
-L<Dist::Zilla::Plugin::TestRelease>
-
-=item *
-
-L<Dist::Zilla::Plugin::ConfirmRelease>
-
-=item *
-
-L<Dist::Zilla::Plugin::NextRelease>
-
-=item *
-
-L<Dist::Zilla::Plugin::AutoPrereqs>
-
-=item *
-
-L<Dist::Zilla::Plugin::OurPkgVersion>
-
-=item *
-
-L<Dist::Zilla::Plugin::Git::Check>
-
-=item *
-
-L<Dist::Zilla::Plugin::Git::Commit>
-
-=item *
-
-L<Dist::Zilla::Plugin::Git::Tag>
-
-=item *
-
-L<Dist::Zilla::Plugin::Git::Push>
-
-=back
+ [GatherDir]
+ [PruneCruft]
+ [ManifestSkip]
+ [MetaYAML]
+ [MetaJSON]
+ [License]
+ [Readme]
+ [ExtraTests]
+ [ExecDir]
+ [ShareDir]
+ [ModuleBuild]
+ [MakeMaker]
+ [Manifest]
+ [TestRelease]
+ [ConfirmRelease]
+ [ACPS::Release]
+ [NextRelease]
+ [AutoPrereqs]
+ [OurPkgVersion]
+ [@Git]
+ push_to = public
+ tag_format = %v
+ tag_message = version %v
 
 =head1 AUTHOR
 
