@@ -1,5 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - added TODO
 
 0.01      2012-07-25 11:47:41 America/New_York
+  - initial version
