@@ -4,10 +4,25 @@ package Dist::Zilla::Plugin::ACPS::Release;
 
 use Moose;
 use v5.10;
+use Git::Wrapper;
 
-with qw( Dist::Zilla::Role::Releaser );
+with qw( Dist::Zilla::Role::BeforeRelease Dist::Zilla::Role::Releaser );
 
 use namespace::autoclean;
+
+sub before_release
+{
+  my $self = shift;
+
+  my $git = Git::Wrapper->new($self->zilla->root);
+  foreach my $tag ($git->tag)
+  {
+    if($tag eq $self->zilla->version)
+    {
+      $self->log_fatal(['there is already a tag for this version: %s', $self->zilla->version]);
+    }
+  }
+}
 
 sub release
 {

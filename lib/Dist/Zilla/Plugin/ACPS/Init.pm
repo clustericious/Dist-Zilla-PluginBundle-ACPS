@@ -13,7 +13,7 @@ use namespace::autoclean;
 sub after_mint
 {
   my($self, $opts) = @_;
-    
+
   my $git = Git::Wrapper->new($opts->{mint_root});
 
   foreach my $remote ($git->remote('-v'))

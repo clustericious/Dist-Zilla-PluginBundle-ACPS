@@ -1,11 +1,10 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.02      2012-07-25 12:39:04 America/New_York
   - self hosting
   - remove git from bundle
   - automatically create remote public
+  - fail to release if there is already a tag for this version
 
 0.02      2012-07-25 11:57:01 America/New_York
   - added TODO
