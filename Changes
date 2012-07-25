@@ -2,6 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - add @Git back in
+  - add VERSION to each module's POD
+  - added ACPS minting profile.
 
 0.03      2012-07-25 13:04:59 America/New_York
   - self hosting

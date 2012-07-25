@@ -33,6 +33,7 @@ sub configure {
     ConfirmRelease
     ACPS::Release
 
+    PodVersion
     NextRelease
     AutoPrereqs
     OurPkgVersion
@@ -78,6 +79,7 @@ It is equivalent to this:
  [TestRelease]
  [ConfirmRelease]
  [ACPS::Release]
+ [PodVersion]
  [NextRelease]
  [AutoPrereqs]
  [OurPkgVersion]
