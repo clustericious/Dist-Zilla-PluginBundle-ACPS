@@ -1,3 +1,0 @@
-. automatically create public repo on acpsdev2:
-  % ssh acpsdev2.gsfc.nasa.gov git --git-dir=public_git/Dist-Zilla-PluginBundle-ACPS.git init --bare
-  % git push public master

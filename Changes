@@ -1,12 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.02      2012-07-25 12:04:53 America/New_York
-
-0.02      2012-07-25 12:02:06 America/New_York
-
-0.02      2012-07-25 12:01:01 America/New_York
+  - self hosting
+  - remove git from bundle
+  - automatically create remote public
 
 0.02      2012-07-25 11:57:01 America/New_York
   - added TODO

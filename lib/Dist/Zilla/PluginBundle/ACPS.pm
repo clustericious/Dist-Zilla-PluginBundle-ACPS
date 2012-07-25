@@ -36,11 +36,6 @@ sub configure {
     NextRelease
     AutoPrereqs
     OurPkgVersion
-
-    Git::Check
-    Git::Commit
-    Git::Tag
-    Git::Push
   ));
 }
 
