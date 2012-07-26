@@ -33,7 +33,7 @@ sub plugin_list {
 
 sub git_arguments {
   my $super = shift->SUPER::git_arguments;
-  {
+  my $ret = {
     %$super,
     allow_dirty => [ qw( dist.ini Changes META.yml META.json ) ],
   }
