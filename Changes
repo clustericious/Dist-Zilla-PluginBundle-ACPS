@@ -2,6 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.05      2012-07-26 12:48:53 America/New_York
+
 0.04      2012-07-25 16:20:49 America/New_York
   - add @Git back in
   - add VERSION to each module's POD
