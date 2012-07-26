@@ -45,10 +45,6 @@ sub execute {
 
 Dist::Zilla::App::Command::rpmspec - generate RPM spec file from your template
 
-=head1 VERSION
-
-version 0.005
-
 =head1 SYNOPSIS
 
   dzil rpmspec [filename]

@@ -45,6 +45,7 @@ sub configure {
       push_to     => 'public',
       tag_format  => '%v',
       tag_message => 'version %v',
+      commit_msg  => 'version %v'
     },
   );
 }
