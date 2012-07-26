@@ -4,6 +4,7 @@ use Moose;
 use v5.10;
 use Dist::Zilla;
 use Dist::Zilla::PluginBundle::Git;
+use Dist::Zilla::Plugin::OurPkgVersion;
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
 # VERSION
