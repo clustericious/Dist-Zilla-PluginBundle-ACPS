@@ -1,13 +1,13 @@
 package Dist::Zilla::PluginBundle::ACPS;
 
-use strict;
-use warnings;
+use Moose;
 use v5.10;
+use Dist::Zilla;
+use Dist::Zilla::PluginBundle::Git;
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
 # VERSION
 
-use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 use namespace::autoclean;
