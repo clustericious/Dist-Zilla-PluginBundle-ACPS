@@ -13,10 +13,8 @@ with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 use namespace::autoclean;
 
-sub configure {
-  my($self) = @_;
-
-  $self->add_plugins(qw(
+sub plugin_list {
+  qw(
     GatherDir
     PruneCruft
     ManifestSkip
@@ -38,15 +36,25 @@ sub configure {
     NextRelease
     AutoPrereqs
     OurPkgVersion
-  ));
+  )
+}
+
+sub git_arguments {
+  {
+    push_to     => 'public',
+    tag_format  => '%v',
+    tag_message => 'version %v',
+    commit_msg  => 'version %v'
+  }
+}
+
+sub configure {
+  my($self) = @_;
+
+  $self->add_plugins($self->plugin_list);
 
   $self->add_bundle(
-    '@Git' => {
-      push_to     => 'public',
-      tag_format  => '%v',
-      tag_message => 'version %v',
-      commit_msg  => 'version %v'
-    },
+    '@Git' => $self->git_arguments,
   );
 }
 

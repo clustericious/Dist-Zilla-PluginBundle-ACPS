@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - added ACPS::RPM and dzil rpmspec command
+  - @ACPS::Legacy and ACPS::Legacy non Dist::Zilla aware dists
 
 0.05      2012-07-26 12:48:53 America/New_York
   - fix some deps

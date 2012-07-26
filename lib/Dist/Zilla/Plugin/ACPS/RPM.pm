@@ -17,12 +17,12 @@ has '+spec_file' => (
 
 sub mk_spec {
     my($self,$archive) = @_;
-    
+
     # this is different from the superclass, we allow fully qualified filenames, because
     # we want to keep the spec template in the share directory with the other profile
     # stuff.
     my $spec_file = $self->spec_file =~ /^\// ? $self->spec_file : $self->zilla->root->file($self->spec_file);
-    
+
     my $t = Text::Template->new(
         TYPE       => 'FILE',
         SOURCE     => $spec_file,
