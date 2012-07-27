@@ -6,14 +6,17 @@ use autodie;
 
 # VERSION
 
-with qw( Dist::Zilla::Role::VersionProvider );
+with qw(
+  Dist::Zilla::Role::VersionProvider
+  Dist::Zilla::Role::BuildPL
+);
 
 use namespace::autoclean;
 
 sub provide_version
 {
   my($self) = @_;
-  
+
   my $version;
 
   foreach my $line (split /\n/, $self->zilla->main_module->content)
@@ -22,6 +25,11 @@ sub provide_version
   }
 
   return $version;
+}
+
+sub setup_installer
+{
+  # Build.PL is gathered from a static file.
 }
 
 __PACKAGE__->meta->make_immutable;

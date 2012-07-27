@@ -48,13 +48,23 @@ sub git_arguments {
   }
 }
 
+sub mvp_multivalue_args { qw( allow_dirty ) }
+
 sub configure {
   my($self) = @_;
 
   $self->add_plugins($self->plugin_list);
 
+  my $git_arguments = $self->git_arguments;
+
+  if(defined $self->payload->{allow_dirty})
+  {
+    $git_arguments->{allow_dirty} //= [];
+    push @{ $git_arguments->{allow_dirty} }, @{ $self->payload->{allow_dirty} };
+  }
+
   $self->add_bundle(
-    '@Git' => $self->git_arguments,
+    '@Git' => $git_arguments,
   );
 }
 

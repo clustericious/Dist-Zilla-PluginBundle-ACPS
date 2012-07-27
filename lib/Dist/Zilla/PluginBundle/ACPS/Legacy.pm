@@ -25,7 +25,6 @@ sub plugin_list {
     ACPS::Legacy
 
     PodVersion
-    NextRelease
     AutoPrereqs
     OurPkgVersion
   )
@@ -35,7 +34,7 @@ sub git_arguments {
   my $super = shift->SUPER::git_arguments;
   my $ret = {
     %$super,
-    allow_dirty => [ qw( dist.ini Changes META.yml META.json ) ],
+    allow_dirty => [ qw( dist.ini META.yml META.json ) ],
   }
 }
 
@@ -56,6 +55,7 @@ L<Manifest|Dist::Zilla::Plugin:::Manifest>,
 L<MetaYAML|Dist::Zilla::Plugin::MetaYAML>,
 L<MetaJSON|Dist::Zilla::Plugin::MetaJSON>,
 L<Readme|Dist::Zilla::Plugin::Readme>,
+L<NextRelease|Dist::Zilla::Plugin::NextRelease>,
 L<ModuleBuild|Dist::Zilla::Plugin::ModuleBuild> or
 L<MakeMaker|Dist::Zilla::Plugin::MakeMaker>, as these are usually maintained by hand or via the Build.PL
 in older ACPS distributions.
