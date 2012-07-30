@@ -28,11 +28,12 @@ BuildRequires: /usr/local/bin/perl
     map { $zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )
 %>
 BuildRoot: %{_tmppath}/%{name}-%{version}-BUILD
+%define acps_prefix /util
+Prefix: %{acps_prefix}
 
 %define _use_internal_dependency_generator 0
 %define __find_requires %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)-filter-requires
 %define __find_provides %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)-filter-provides
-%define acps_prefix /util
 
 %description
 <% $zilla->abstract %>
