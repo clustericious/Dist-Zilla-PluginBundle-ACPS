@@ -4,6 +4,7 @@ use Moose;
 use v5.10;
 use autodie;
 
+# ABSTRACT: Dist::Zilla plugin for ACPS CIs that are pre-Dist::Zilla
 # VERSION
 
 with qw(
@@ -38,10 +39,6 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-=head1 NAME
-
-Dist::Zilla::Plugin::ACPS::Legacy - Dist::Zilla plugin for ACPS CIs that are pre-Dist::Zilla
-
 =head1 DESCRIPTION
 
 Don't use this direectly, instead use L<@ACPS::Legacy|Dist::Zilla::PluginBundle::ACPS::Legacy>.
@@ -54,9 +51,5 @@ This plugin does this:
 Determines the version from MainModule::VERSION instead of getting it from the dist.ini.
 
 =back
-
-=head1 AUTHOR
-
-Graham Ollis <gollis@sesda2.com>
 
 =cut

@@ -6,6 +6,9 @@ use strict;
 use warnings;
 use Carp;
 
+# ABSTRACT: generate RPM spec file from your template
+# VERSION
+
 use Dist::Zilla::App -command;
 
 # ABSTRACT: generate RPM spec file from your template
@@ -37,14 +40,6 @@ sub execute {
 
 1;
 
-
-
-=pod
-
-=head1 NAME
-
-Dist::Zilla::App::Command::rpmspec - generate RPM spec file from your template
-
 =head1 SYNOPSIS
 
   dzil rpmspec [filename]
@@ -67,18 +62,4 @@ build without having to run dzil each time.
 
 The filename to write the specfile to.
 
-=head1 AUTHOR
-
-Stephen Clouse <stephenclouse@gmail.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Stephen Clouse.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
 =cut
-
-
-__END__

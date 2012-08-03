@@ -3,6 +3,7 @@ package Dist::Zilla::PluginBundle::ACPS::Legacy;
 use Moose;
 use v5.10;
 
+# ABSTRACT: Dist::Zilla ACPS bundle for dists not originally written with Dist::Zilla in mind
 # VERSION
 
 extends 'Dist::Zilla::PluginBundle::ACPS';
@@ -44,10 +45,6 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-=head1 NAME
-
-Dist::Zilla::PluginBundle::ACPS::Legacy - Dist::Zilla ACPS bundle for dists not originally written with Dist::Zilla in mind
-
 =head1 DESCRIPTION
 
 This plugin bundle is identical to L<@ACPS|Dist::Zilla::PluginBundle::ACPS> except it does not include
@@ -61,9 +58,5 @@ L<MakeMaker|Dist::Zilla::Plugin::MakeMaker>, as these are usually maintained by 
 in older ACPS distributions.
 
 This plugin bundle also includes L<ACPS::Legacy|Dist::Zilla::Plugin::ACPS::Legacy>.
-
-=head1 AUTHOR
-
-Graham Ollis <gollis@sesda2.com>
 
 =cut

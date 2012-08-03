@@ -4,6 +4,7 @@ use Moose;
 use v5.10;
 use Dist::Zilla::MintingProfile::ACPS;
 
+# ABSTRACT: RPM Dist::Zilla plugin for ACPS
 # VERSION
 
 extends 'Dist::Zilla::Plugin::RPM';
@@ -42,17 +43,9 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-=head1 NAME
-
-Dist::Zilla::Plugin::ACPS::RPM - RPM Dist::Zilla plugin for ACPS
-
 =head1 DESCRIPTION
 
 This in herits from L<Dist::Zilla::Plugin::RPM>, and changes the
 default spec template.
-
-=head1 AUTHOR
-
-Graham Ollis <gollis@sesda2.com>
 
 =cut

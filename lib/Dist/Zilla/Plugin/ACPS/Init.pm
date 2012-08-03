@@ -4,6 +4,7 @@ use Moose;
 use v5.10;
 use Git::Wrapper;
 
+# ABSTRACT: init plugin for ACPS
 # VERSION
 
 with 'Dist::Zilla::Role::AfterMint';
@@ -36,17 +37,9 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-=head1 NAME
-
-Dist::Zilla::Plugin::ACPS::Init - init plugin for ACPS
-
 =head1 DESCRIPTION
 
 Standard init plugin for ACPS distros.  May change in the future,
 but for now it creates a public git repo on acpsdev2.
-
-=head1 AUTHOR
-
-Graham Ollis <gollis@sesda2.com>
 
 =cut

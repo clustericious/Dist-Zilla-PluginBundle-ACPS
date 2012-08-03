@@ -3,6 +3,7 @@ package Dist::Zilla::MintingProfile::ACPS;
 use Moose;
 use v5.10;
 
+# ABSTRACT: ACPS Dist::Zilla minting profile
 # VERSION
 
 with qw( Dist::Zilla::Role::MintingProfile::ShareDir );
@@ -14,12 +15,12 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-=head1 NAME
+=head1 SYNOPSIS
 
-Dist::Zilla::MintingProfile::ACPS - ACPS Dist::Zilla minting profile
+ % dzil new -P ACPS Hello::World
 
-=head1 AUTHOR
+=head1 DESCRIPTION
 
-Graham Ollis <gollis@sesda2.com>
+Minting profile for ACPS.
 
 =cut

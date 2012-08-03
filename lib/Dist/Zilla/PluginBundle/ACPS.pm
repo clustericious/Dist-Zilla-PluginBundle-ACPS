@@ -3,6 +3,7 @@ package Dist::Zilla::PluginBundle::ACPS;
 use Moose;
 use v5.10;
 use Dist::Zilla;
+use Dist::Zilla::Plugin::PodWeaver;
 use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::OurPkgVersion;
 
@@ -32,7 +33,7 @@ sub plugin_list {
     ConfirmRelease
     ACPS::Release
 
-    PodVersion
+    PodWeaver
     NextRelease
     AutoPrereqs
     OurPkgVersion
@@ -74,10 +75,6 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-=head1 NAME
-
-Dist::Zilla::PluginBundle::ACPS - the basic plugins to maintain and release ACPS dists
-
 =head1 DESCRIPTION
 
 Plugin bundle for creating and maintaining Perl distributions for ACPS.
@@ -99,7 +96,7 @@ It is equivalent to this:
  [TestRelease]
  [ConfirmRelease]
  [ACPS::Release]
- [PodVersion]
+ [PodWeaver]
  [NextRelease]
  [AutoPrereqs]
  [OurPkgVersion]
@@ -107,9 +104,5 @@ It is equivalent to this:
  push_to = public
  tag_format = %v
  tag_message = version %v
-
-=head1 AUTHOR
-
-Graham Ollis <gollis@sesda2.com>
 
 =cut
