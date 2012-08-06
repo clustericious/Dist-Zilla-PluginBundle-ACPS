@@ -11,9 +11,6 @@ use Carp;
 
 use Dist::Zilla::App -command;
 
-# ABSTRACT: generate RPM spec file from your template
-# VERSION
-
 sub abstract { 'generate RPM spec file from your build template' }
 
 sub execute {
