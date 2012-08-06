@@ -7,21 +7,21 @@ Group: Applications/CPAN
 BuildArch: noarch
 Vendor: <% $zilla->license->holder %>
 Source: <% $archive %>
-Requires: perl
+Requires: /usr/local/bin/perl
 <%
   use List::MoreUtils qw( uniq );
   join "\n",
-    map { "Requires: perl($_)" }
+    map { "Requires: local-perl($_)" }
     uniq
     sort
     grep !/^perl$/,
     $zilla->prereqs->requirements_for('runtime', 'requires')->required_modules
 %>
-BuildRequires: perl
+BuildRequires: /usr/local/bin/perl
 <%
   use List::MoreUtils qw( uniq );
   join "\n",
-    map { "BuildRequires: perl($_)" }
+    map { "BuildRequires: local-perl($_)" }
     uniq
     sort
     grep !/^perl$/,
@@ -51,7 +51,7 @@ else
 FINDREQ=/usr/lib/rpm/find-requires
 fi
 
-\$FINDREQ \$*
+\$FINDREQ \$* | perl -n -e 's/^perl/local-perl/; print unless $_ eq "local-perl >= 1:5.10"'
 EOF
 chmod +x %{__find_requires}
 
@@ -65,7 +65,7 @@ else
 FINDREQ=/usr/lib/rpm/find-provides
 fi
 
-\$FINDREQ \$*
+\$FINDREQ \$* | perl -n -e 's/^perl/local-perl/; print'
 EOF
 chmod +x %{__find_provides}
 

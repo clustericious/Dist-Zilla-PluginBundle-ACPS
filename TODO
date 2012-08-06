@@ -1,1 +1,2 @@
-. add an option to specifiy something other than acps for cm directory when doing dzil new
+. Custom RPMS requires excludes
+. Exclude /usr/bin/env by default
