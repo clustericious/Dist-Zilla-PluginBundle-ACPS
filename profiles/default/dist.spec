@@ -51,7 +51,7 @@ else
 FINDREQ=/usr/lib/rpm/find-requires
 fi
 
-\$FINDREQ \$*
+\$FINDREQ \$* | grep -v ^/usr/bin/env
 EOF
 chmod +x %{__find_requires}
 
@@ -60,12 +60,12 @@ cat << EOF > %{__find_provides}
 #!/bin/sh
 
 if [ -x /usr/lib/rpm/redhat/find-provides ] ; then
-FINDREQ=/usr/lib/rpm/redhat/find-provides
+FINDPRO=/usr/lib/rpm/redhat/find-provides
 else
-FINDREQ=/usr/lib/rpm/find-provides
+FINDPRO=/usr/lib/rpm/find-provides
 fi
 
-\$FINDREQ \$*
+\$FINDPRO \$*
 EOF
 chmod +x %{__find_provides}
 
