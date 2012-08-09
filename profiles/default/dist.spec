@@ -51,7 +51,7 @@ else
 FINDREQ=/usr/lib/rpm/find-requires
 fi
 
-\$FINDREQ \$* | grep -v ^/usr/bin/env
+\$FINDREQ \$* | grep -v ^/usr/bin/env | grep -v 'perl(<%=)'
 EOF
 chmod +x %{__find_requires}
 
