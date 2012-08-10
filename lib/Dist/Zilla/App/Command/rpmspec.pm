@@ -5,6 +5,7 @@ package Dist::Zilla::App::Command::rpmspec;
 use strict;
 use warnings;
 use Carp;
+use File::HomeDir;
 
 # ABSTRACT: generate RPM spec file from your template
 # VERSION
@@ -26,9 +27,20 @@ sub execute {
 
     $filename ||= $self->zilla->name . '.spec';
 
-    my $outfile = Path::Class::File->new($filename);
+    my $outfile = Path::Class::File->new(File::HomeDir->my_home, qw( rpmbuild SPECS ), $filename);
     my $out = $outfile->openw;
-    print $out $self->zilla->plugin_named('ACPS::RPM')->mk_spec(
+    
+    my $plugin = $self->zilla->plugin_named('ACPS::RPM');
+    
+    unless(defined $plugin)
+    {
+      $self->log("[rpmspec] add this to your dist.ini:");
+      $self->log("[rpmspec] [ACPS::RPM]");
+      $self->log("[rpmspec] ;ignore_build_deps = 1 ; uncomment to ignore deps");
+      die "could not find ACPS::RPM plugin";
+    }
+    
+    print $out $plugin->mk_spec(
         sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version)
     );
 

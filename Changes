@@ -4,6 +4,7 @@ Revision history for {{$dist->name}}
   - added ACPS::RPM and dzil rpmspec command
   - @ACPS::Legacy and ACPS::Legacy for non Dist::Zilla aware dists
   - create .dzil/config.ini if it doesn't already exist.
+  - print out useful diagnostic when dzil rpmspec is run without the RPM plugin
 
 0.05      2012-07-26 12:48:53 America/New_York
   - fix some deps
