@@ -1,4 +1,4 @@
-package Dist::Zilla::App::Command::rpmspec;
+package Dist::Zilla::App::Command::apspec;
 
 # forked from Dist::Zilla::App::Command::mkrpmspec
 
@@ -34,24 +34,22 @@ sub execute {
     
     unless(defined $plugin)
     {
-      $self->log("[rpmspec] add this to your dist.ini:");
-      $self->log("[rpmspec] [ACPS::RPM]");
-      $self->log("[rpmspec] ;ignore_build_deps = 1 ; uncomment to ignore deps");
+      $self->log("[apspec] add this to your dist.ini:");
+      $self->log("[apspec] [ACPS::RPM]");
+      $self->log("[apspec] ;ignore_build_deps = 1 ; uncomment to ignore deps");
       die "could not find ACPS::RPM plugin";
     }
     
     print $out $plugin->mk_spec(
         sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version)
     );
-
-    $self->log("spec file written to $outfile");
 }
 
 1;
 
 =head1 SYNOPSIS
 
-  dzil rpmspec [filename]
+  dzil apspec [filename]
 
 =head1 DESCRIPTION
 
@@ -62,8 +60,8 @@ build without having to run dzil each time.
 
 =head1 EXAMPLE
 
-  $ dzil rpmspec
-  $ dzil rpmspec /path/to/foo.spec
+  $ dzil apspec
+  $ dzil apspec /path/to/foo.spec
 
 =head1 OPTIONS
 
