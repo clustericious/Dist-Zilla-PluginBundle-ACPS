@@ -34,14 +34,15 @@ sub execute {
     
     unless(defined $plugin)
     {
-      $self->log("[apspec] add this to your dist.ini:");
-      $self->log("[apspec] [ACPS::RPM]");
-      $self->log("[apspec] ;ignore_build_deps = 1 ; uncomment to ignore deps");
-      die "could not find ACPS::RPM plugin";
+        $self->log("[apspec] add this to your dist.ini:");
+        $self->log("[apspec] [ACPS::RPM]");
+        $self->log("[apspec] ;ignore_build_deps = 1 ; uncomment to ignore deps");
+        die "could not find ACPS::RPM plugin";
     }
     
     print $out $plugin->mk_spec(
-        sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version)
+        sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version),
+        $outfile,
     );
 }
 
