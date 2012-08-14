@@ -62,6 +62,19 @@ sub mk_rpm {
         $self->log_fatal("could not find tar file (expected $tar to work)");
     }
 
+    # create .rpmmacros file if it doesn't already exist.
+    do {
+        my $rpmmacros_file = file(File::HomeDir->my_home, '.rpmmacros');
+        unless(-f $rpmmacros_file)
+        {
+            $self->log("creating " . $rpmmacros_file);
+            my $fh = $rpmmacros_file->openw;
+            say $fh '%packager %(echo "$USER")';
+            say $fh '%_topdir %(echo $HOME)/rpmbuild';
+            $fh->close;
+        }
+    };
+
     # copy tar to SOURCES directory
     do {
         my $from = $tar;
