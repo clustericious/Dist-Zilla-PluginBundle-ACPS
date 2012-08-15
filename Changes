@@ -5,6 +5,7 @@ Revision history for {{$dist->name}}
   - @ACPS::Legacy and ACPS::Legacy for non Dist::Zilla aware dists
   - create .dzil/config.ini if it doesn't already exist.
   - print out useful diagnostic when dzil rpmspec is run without the RPM plugin
+  - use Template instead of Text::Template for spec template.
 
 0.05      2012-07-26 12:48:53 America/New_York
   - fix some deps

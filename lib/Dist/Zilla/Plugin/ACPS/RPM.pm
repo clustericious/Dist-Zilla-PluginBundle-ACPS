@@ -27,88 +27,81 @@ has 'prefer_make_maker' => (
 );
 
 sub mk_spec {
-    my($self, $archive, $spec_filename) = @_;
+  my($self, $archive, $spec_filename) = @_;
 
-    # this is different from the superclass, we allow fully qualified filenames, because
-    # we want to keep the spec template in the share directory with the other profile
-    # stuff.
-    my $template = $self->spec_template =~ /^\// ? $self->spec_template : $self->zilla->root->file($self->spec_template);
+  # this is different from the superclass, we allow fully qualified filenames, because
+  # we want to keep the spec template in the share directory with the other profile
+  # stuff.
+  my $template = $self->spec_template =~ /^\// ? $self->spec_template : $self->zilla->root->file($self->spec_template);
 
-    my $tt2 = Template->new;
+  my $tt2 = Template->new;
 
-    my $vars = {
-      zilla => $self->zilla,
-      rpm   => { 
-        prefer_make_maker => $self->prefer_make_maker,
-        archive           => $archive,
-        version           => $self->zilla->version,
-        release           => 1,
-        requires          => [map { "perl($_)" } uniq sort grep !/^perl$/, $self->zilla->prereqs->requirements_for('runtime', 'requires')->required_modules],
-        build_requires    => [map { "perl($_)" } uniq sort grep !/^perl$/, map { $self->zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )],
-      },
-    };
-    
-    
-    
-    $self->log("using spec template: " . $template);
-    my $spec_text = '';
-    $tt2->process($template->stringify, $vars, \$spec_text) || $self->log_fatal("TT2 error: " . $tt2->error);
-    
-    $self->log("creating spec: " . $spec_filename)
-        if defined $spec_filename;
-    
-    return $spec_text;
+   my $vars = {
+    zilla => $self->zilla,
+    rpm   => { 
+      prefer_make_maker => $self->prefer_make_maker,
+      archive           => $archive,
+      version           => $self->zilla->version,
+      release           => 1,
+      requires          => [map { "perl($_)" } uniq sort grep !/^perl$/, $self->zilla->prereqs->requirements_for('runtime', 'requires')->required_modules],
+      build_requires    => [map { "perl($_)" } uniq sort grep !/^perl$/, map { $self->zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )],
+    },
+  };
+
+  $self->log("using spec template: " . $template);
+  my $spec_text = '';
+  $tt2->process($template->stringify, $vars, \$spec_text) || $self->log_fatal("TT2 error: " . $tt2->error);
+
+  $self->log("creating spec: " . $spec_filename)
+    if defined $spec_filename;
+
+  return $spec_text;
 }
 
 sub mk_rpm {
-    my $self = shift;
+  my $self = shift;
 
-    unless(-d dir(File::HomeDir->my_home, 'rpmbuild'))
+  $self->log_fatal("first create a ~/rpmbuild directory (and make sure rpmbuild is installed)")
+  unless -d dir(File::HomeDir->my_home, 'rpmbuild');
+
+  mkdir dir(File::HomeDir->my_home, 'rpmbuild', $_) for qw( BUILD RPMS SOURCES SPECS SRPMS );
+
+  my $tar = sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version);
+
+  $self->log_fatal("could not find tar file (expected $tar to work)") unless -f $tar;
+
+  # create .rpmmacros file if it doesn't already exist.
+  do {
+    my $rpmmacros_file = file(File::HomeDir->my_home, '.rpmmacros');
+    unless(-f $rpmmacros_file)
     {
-        $self->log_fatal("first create a ~/rpmbuild directory (and make sure rpmbuild is installed)");
+      $self->log("creating " . $rpmmacros_file);
+      my $fh = $rpmmacros_file->openw;
+      say $fh '%packager %(echo "$USER")';
+      say $fh '%_topdir %(echo $HOME)/rpmbuild';
+      $fh->close;
     }
+  };
 
-    mkdir dir(File::HomeDir->my_home, 'rpmbuild', $_) for qw( BUILD RPMS SOURCES SPECS SRPMS );
-
-    my $tar = sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version);
+  # copy tar to SOURCES directory
+  do {
+    my $from = $tar;
+    my $to   = file(File::HomeDir->my_home, 'rpmbuild', 'SOURCES', $tar);
+    $self->log("copy tar: $to");
+    copy($from, $to) || $self->log_fatal("Copy failed: $!");
+  };
     
-    unless(-f $tar)
-    {
-        $self->log_fatal("could not find tar file (expected $tar to work)");
-    }
+  # generate spec file
+  my $spec = do {
+    my $outfile = Path::Class::File->new(File::HomeDir->my_home, qw( rpmbuild SPECS ), $self->zilla->name . '.spec');
+    my $out = $outfile->openw;
+    $self->log("creating spec: " . $outfile);
+    print $out $self->mk_spec($tar);
+    $outfile;
+  };
 
-    # create .rpmmacros file if it doesn't already exist.
-    do {
-        my $rpmmacros_file = file(File::HomeDir->my_home, '.rpmmacros');
-        unless(-f $rpmmacros_file)
-        {
-            $self->log("creating " . $rpmmacros_file);
-            my $fh = $rpmmacros_file->openw;
-            say $fh '%packager %(echo "$USER")';
-            say $fh '%_topdir %(echo $HOME)/rpmbuild';
-            $fh->close;
-        }
-    };
-
-    # copy tar to SOURCES directory
-    do {
-        my $from = $tar;
-        my $to   = file(File::HomeDir->my_home, 'rpmbuild', 'SOURCES', $tar);
-        $self->log("copy tar: $to");
-        copy($from, $to) || $self->log_fatal("Copy failed: $!");
-    };
-    
-    # generate spec file
-    my $spec = do {
-        my $outfile = Path::Class::File->new(File::HomeDir->my_home, qw( rpmbuild SPECS ), $self->zilla->name . '.spec');
-        my $out = $outfile->openw;
-        $self->log("creating spec: " . $outfile);
-        print $out $self->mk_spec($tar);
-        $outfile;
-    };
-    
-    # build rpm
-    $self->log("generate rpm: " . $_) for split /\n/, `ap build $spec`;
+  # build rpm
+  $self->log("generate rpm: " . $_) for split /\n/, `ap build $spec`;
 }
 
 
