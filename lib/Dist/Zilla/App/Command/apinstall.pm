@@ -10,7 +10,7 @@ use File::HomeDir;
 
 use Dist::Zilla::App -command;
 
-sub abstract { 'generate RPM file for your dist' }
+sub abstract { 'install RPM file for your dist' }
 
 sub execute {
   my($self,$opt,$args) = @_;
