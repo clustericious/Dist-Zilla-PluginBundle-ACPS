@@ -34,9 +34,9 @@ sub mk_spec {
   # stuff.
   my $template = $self->spec_template =~ /^\// ? $self->spec_template : $self->zilla->root->file($self->spec_template);
 
-  my $tt2 = Template->new;
+  my $tt2 = Template->new( ABSOLUTE => 1 );
 
-   my $vars = {
+  my $vars = {
     zilla => $self->zilla,
     rpm   => { 
       prefer_make_maker => $self->prefer_make_maker,
@@ -48,9 +48,10 @@ sub mk_spec {
     },
   };
 
+  $template .= ''; # make sure this is a string and not an object
   $self->log("using spec template: " . $template);
   my $spec_text = '';
-  $tt2->process($template->stringify, $vars, \$spec_text) || $self->log_fatal("TT2 error: " . $tt2->error);
+  $tt2->process($template, $vars, \$spec_text) || $self->log_fatal("TT2 error: " . $tt2->error);
 
   $self->log("creating spec: " . $spec_filename)
     if defined $spec_filename;

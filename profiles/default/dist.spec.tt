@@ -72,6 +72,8 @@ if [ -e Build.PL ]; then
   && ./Build test
 elif [ -e Makefile.PL ]; then
 [% END %]
+  unset PERL_MB_OPT
+  unset PERL_MM_OPT
   perl Makefile.PL INSTALLSITELIB=%{acps_prefix}/lib/perl     \
                    INSTALLSITEARCH=%{acps_prefix}/lib/perl    \
                    INSTALLSITEBIN=%{acps_prefix}/bin          \
@@ -99,7 +101,8 @@ elif [ -e Makefile.PL ]; then
 [% IF rpm.prefer_make_maker == 0 %]
 fi
 [% END %]
-find %{buildroot} -not -type d | sed -e 's#%{buildroot}##' > %{_tmppath}/filelist
+rm -f %{buildroot}/perl/lib/perl/perllocal.pod
+find %{buildroot}/util -not -type d | sed -e 's#%{buildroot}##' > %{_tmppath}/filelist
 
 %clean
 if [ "%{buildroot}" != "/" ] ; then
