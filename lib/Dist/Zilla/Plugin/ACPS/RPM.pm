@@ -110,9 +110,18 @@ sub mk_rpm {
   };
 
   # build rpm
-  $self->log("generate rpm: " . $_) for split /\n/, `ap build $spec`;
+  my @rpms = split /\n/, `ap build $spec`;
+  $self->log("generate rpm: " . $_) for @rpms;
+  
+  @rpms;
 }
 
+sub install_rpm
+{
+  my($self, @rpms) = @_;
+  $self->log("installing rpm: " . $_) for @rpms;
+  `ap install @rpms`;
+}
 
 __PACKAGE__->meta->make_immutable;
 
