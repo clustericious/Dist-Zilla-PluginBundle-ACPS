@@ -26,6 +26,13 @@ has 'prefer_make_maker' => (
   default => 0,
 );
 
+has 'filter_requires' => (
+  is => 'ro',
+  isa => 'ArrayRef[Str]',
+);
+
+sub mvp_multivalue_args { qw(filter_requires) }
+
 sub mk_spec {
   my($self, $archive, $spec_filename) = @_;
 
@@ -53,6 +60,7 @@ sub mk_spec {
       release           => $release,
       requires          => [map { "perl($_)" } uniq sort grep !/^perl$/, $self->zilla->prereqs->requirements_for('runtime', 'requires')->required_modules],
       build_requires    => [map { "perl($_)" } uniq sort grep !/^perl$/, map { $self->zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )],
+      filter_requires   => $self->filter_requires,
     },
   };
 

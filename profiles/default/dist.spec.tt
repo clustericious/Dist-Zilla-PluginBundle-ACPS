@@ -39,7 +39,7 @@ else
 FINDREQ=/usr/lib/rpm/find-requires
 fi
 
-\$FINDREQ \$* | grep -v ^/usr/bin/env 
+\$FINDREQ \$* | grep -v ^/usr/bin/env [% FOREACH filter IN rpm.filter_requires %]| grep -v [% filter %][% END %]
 EOF
 chmod +x %{__find_requires}
 
