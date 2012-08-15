@@ -1,32 +1,20 @@
-Name: acps-<% $zilla->name %>
-Version: <% (my $v = $zilla->version) =~ s/^\v//; $v %>
-Release: 1
-Summary: <% $zilla->abstract %>
-License: <% $zilla->license->name %>
+Name: acps-[% zilla.name %]
+Version: [% rpm.version %]
+Release: [% rpm.release %]
+Summary: [% zilla.abstract %]
+License: [% zilla.license.name %]
 Group: Applications/CPAN
 BuildArch: noarch
-Vendor: <% $zilla->license->holder %>
-Source: <% $archive %>
+Vendor: [% zilla.license.holder %]
+Source: [% rpm.archive %]
 Requires: perl
-<%
-  use List::MoreUtils qw( uniq );
-  join "\n",
-    map { "Requires: perl($_)" }
-    uniq
-    sort
-    grep !/^perl$/,
-    $zilla->prereqs->requirements_for('runtime', 'requires')->required_modules
-%>
+[% FOREACH require IN rpm.requires -%]
+Requires: [% require %]
+[% END -%]
 BuildRequires: perl
-<%
-  use List::MoreUtils qw( uniq );
-  join "\n",
-    map { "BuildRequires: perl($_)" }
-    uniq
-    sort
-    grep !/^perl$/,
-    map { $zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )
-%>
+[% FOREACH require IN rpm.build_requires -%]
+BuildRequires: [% require %]
+[% END -%]
 BuildRoot: %{_tmppath}/%{name}-%{version}-BUILD
 %define acps_prefix /util
 Prefix: %{acps_prefix}
@@ -36,10 +24,10 @@ Prefix: %{acps_prefix}
 %define __find_provides %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)-filter-provides
 
 %description
-<% $zilla->abstract %>
+[% zilla.abstract %]
 
 %prep
-%setup -q -n <% $zilla->name %>-%{version}
+%setup -q -n [% zilla.name %]-[% rpm.version %]
 
 # filter requires, sub local-perl for ^perl
 cat << EOF > %{__find_requires}
@@ -70,6 +58,7 @@ EOF
 chmod +x %{__find_provides}
 
 %build
+[% IF rpm.prefer_make_maker == 0 %]
 if [ -e Build.PL ]; then
   perl Build.PL --install_path lib=%{acps_prefix}/lib/perl    \
                 --install_path arch=%{acps_prefix}/lib/perl   \
@@ -82,6 +71,7 @@ if [ -e Build.PL ]; then
   && ./Build \
   && ./Build test
 elif [ -e Makefile.PL ]; then
+[% END %]
   perl Makefile.PL INSTALLSITELIB=%{acps_prefix}/lib/perl     \
                    INSTALLSITEARCH=%{acps_prefix}/lib/perl    \
                    INSTALLSITEBIN=%{acps_prefix}/bin          \
@@ -89,21 +79,26 @@ elif [ -e Makefile.PL ]; then
                    INSTALLSITESCRIPT=%{acps_prefix}/bin       \
                    INSTALLSITEMAN1DIR=%{acps_prefix}/man/man1 \
                    INSTALLSITEMAN3DIR=%{acps_prefix}/man/man3 \
-  && ./Build \
-  && ./Build test
+  && make \
+  && make test
+[% IF rpm.prefer_make_maker == 0 %]
 fi
+[% END %]
 
 %install
 if [ "%{buildroot}" != "/" ]; then
   rm -rf %{buildroot}
 fi
 
-echo `ls`
+[% IF rpm.prefer_make_maker == 0 %]
 if [ -e Build.PL ]; then
   ./Build install
 elif [ -e Makefile.PL ]; then
+[% END %]
   make install DESTDIR=%{buildroot}
+[% IF rpm.prefer_make_maker == 0 %]
 fi
+[% END %]
 find %{buildroot} -not -type d | sed -e 's#%{buildroot}##' > %{_tmppath}/filelist
 
 %clean

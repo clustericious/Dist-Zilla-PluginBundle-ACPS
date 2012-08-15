@@ -6,6 +6,8 @@ use Dist::Zilla::MintingProfile::ACPS;
 use Path::Class qw( dir file );
 use File::HomeDir;
 use File::Copy qw( copy );
+use List::MoreUtils qw( uniq );
+use Template;
 
 # ABSTRACT: RPM Dist::Zilla plugin for ACPS
 # VERSION
@@ -14,35 +16,48 @@ extends 'Dist::Zilla::Plugin::RPM';
 
 use namespace::autoclean;
 
-has '+spec_file' => (
+has 'spec_template' => (
   is => 'ro',
-  default => sub { Dist::Zilla::MintingProfile::ACPS->profile_dir . '/default/dist.spec' },
+  default => sub { Dist::Zilla::MintingProfile::ACPS->profile_dir . '/default/dist.spec.tt' },
+);
+
+has 'prefer_make_maker' => (
+  is => 'ro',
+  default => 0,
 );
 
 sub mk_spec {
-    my($self,$archive, $specfile) = @_;
+    my($self, $archive, $spec_filename) = @_;
 
     # this is different from the superclass, we allow fully qualified filenames, because
     # we want to keep the spec template in the share directory with the other profile
     # stuff.
-    my $spec_file = $self->spec_file =~ /^\// ? $self->spec_file : $self->zilla->root->file($self->spec_file);
+    my $template = $self->spec_template =~ /^\// ? $self->spec_template : $self->zilla->root->file($self->spec_template);
 
-    my $t = Text::Template->new(
-        TYPE       => 'FILE',
-        SOURCE     => $spec_file,
-        DELIMITERS => [ '<%', '%>' ],
-    ) || $self->log_fatal($Text::Template::ERROR);
-    my $ret = $t->fill_in(
-        HASH => {
-            zilla   => \($self->zilla),
-            archive => \$archive,
-        },
-    ) || $self->log_fatal($Text::Template::ERROR);
+    my $tt2 = Template->new;
+
+    my $vars = {
+      zilla => $self->zilla,
+      rpm   => { 
+        prefer_make_maker => $self->prefer_make_maker,
+        archive           => $archive,
+        version           => $self->zilla->version,
+        release           => 1,
+        requires          => [map { "perl($_)" } uniq sort grep !/^perl$/, $self->zilla->prereqs->requirements_for('runtime', 'requires')->required_modules],
+        build_requires    => [map { "perl($_)" } uniq sort grep !/^perl$/, map { $self->zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )],
+      },
+    };
     
-    $self->log("creating spec: " . $specfile)
-        if defined $specfile;
     
-    return $ret;
+    
+    $self->log("using spec template: " . $template);
+    my $spec_text = '';
+    $tt2->process($template->stringify, $vars, \$spec_text) || $self->log_fatal("TT2 error: " . $tt2->error);
+    
+    $self->log("creating spec: " . $spec_filename)
+        if defined $spec_filename;
+    
+    return $spec_text;
 }
 
 sub mk_rpm {
