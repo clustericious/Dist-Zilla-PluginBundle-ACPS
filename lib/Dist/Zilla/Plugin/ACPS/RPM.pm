@@ -36,13 +36,21 @@ sub mk_spec {
 
   my $tt2 = Template->new( ABSOLUTE => 1 );
 
+  my $release = do {
+    my $name    = $self->zilla->name;
+    my $version = $self->zilla->version;
+    $self->log("% ap nextrelease acps-$name $version");
+    `ap nextrelease acps-$name $version`;
+  };
+  chomp $release;
+  
   my $vars = {
     zilla => $self->zilla,
     rpm   => { 
       prefer_make_maker => $self->prefer_make_maker,
       archive           => $archive,
       version           => $self->zilla->version,
-      release           => 1,
+      release           => $release,
       requires          => [map { "perl($_)" } uniq sort grep !/^perl$/, $self->zilla->prereqs->requirements_for('runtime', 'requires')->required_modules],
       build_requires    => [map { "perl($_)" } uniq sort grep !/^perl$/, map { $self->zilla->prereqs->requirements_for($_, 'requires')->required_modules } qw( configure build test runtime )],
     },
