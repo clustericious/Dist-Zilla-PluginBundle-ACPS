@@ -6,6 +6,9 @@ Revision history for {{$dist->name}}
   - create .dzil/config.ini if it doesn't already exist.
   - print out useful diagnostic when dzil rpmspec is run without the RPM plugin
   - use Template instead of Text::Template for spec template.
+  - Forked some [Git::*] components to ensure that commit/tags happen at 
+    release time and push happens after release, so that if a push fails
+    during a release doesn't muck everything else up.
 
 0.05      2012-07-26 12:48:53 America/New_York
   - fix some deps
