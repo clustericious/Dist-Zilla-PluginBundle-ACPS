@@ -56,7 +56,6 @@ sub configure {
     push @{ $allow_dirty }, @{ $self->payload->{allow_dirty} };
   }
 
-  print "allow_dirty = ", join(" ", @$allow_dirty), "\n";
   $self->add_plugins(
     ['Git::Check', { allow_dirty => $allow_dirty } ], 
     'ACPS::Git::Commit',
