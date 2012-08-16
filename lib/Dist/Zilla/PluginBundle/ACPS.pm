@@ -31,7 +31,6 @@ sub plugin_list {
     Manifest
     TestRelease
     ConfirmRelease
-    ACPS::Release
 
     PodWeaver
     NextRelease
@@ -40,32 +39,29 @@ sub plugin_list {
   )
 }
 
-sub git_arguments {
-  {
-    push_to     => 'public',
-    tag_format  => '%v',
-    tag_message => 'version %v',
-    commit_msg  => 'version %v'
-  }
-}
+sub allow_dirty { [ 'Changes', 'dist.ini' ] };
 
 sub mvp_multivalue_args { qw( allow_dirty ) }
+
+sub is_legacy { 0 }
 
 sub configure {
   my($self) = @_;
 
   $self->add_plugins($self->plugin_list);
 
-  my $git_arguments = $self->git_arguments;
-
+  my $allow_dirty = $self->allow_dirty;
   if(defined $self->payload->{allow_dirty})
   {
-    $git_arguments->{allow_dirty} //= [];
-    push @{ $git_arguments->{allow_dirty} }, @{ $self->payload->{allow_dirty} };
+    push @{ $allow_dirty }, @{ $self->payload->{allow_dirty} };
   }
 
-  $self->add_bundle(
-    '@Git' => $git_arguments,
+  print "allow_dirty = ", join(" ", @$allow_dirty), "\n";
+  $self->add_plugins(
+    ['Git::Check', { allow_dirty => $allow_dirty } ], 
+    'ACPS::Git::Commit',
+    ($self->is_legacy ? () : ('ACPS::Git::CommitBuild')),
+    'ACPS::Release',
   );
 }
 
@@ -95,14 +91,14 @@ It is equivalent to this:
  [Manifest]
  [TestRelease]
  [ConfirmRelease]
- [ACPS::Release]
+ 
  [PodWeaver]
  [NextRelease]
  [AutoPrereqs]
  [OurPkgVersion]
- [@Git]
- push_to = public
- tag_format = %v
- tag_message = version %v
+ 
+ [Git::Check]
+ [ACPS::Git::Commit]
+ [ACPS::Release]
 
 =cut

@@ -31,13 +31,9 @@ sub plugin_list {
   )
 }
 
-sub git_arguments {
-  my $super = shift->SUPER::git_arguments;
-  my $ret = {
-    %$super,
-    allow_dirty => [ qw( dist.ini META.yml META.json ) ],
-  }
-}
+sub is_legacy { 1 }
+
+sub allow_dirty { [ qw( dist.ini META.yml META.json ) ] };
 
 __PACKAGE__->meta->make_immutable;
 
