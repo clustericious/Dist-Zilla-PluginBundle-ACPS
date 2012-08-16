@@ -60,7 +60,7 @@ sub configure {
     ['Git::Check', { allow_dirty => $allow_dirty } ], 
     'ACPS::Git::Commit',
     ($self->is_legacy ? () : ('ACPS::Git::CommitBuild')),
-    'ACPS::Release',
+    ['ACPS::Release', { legacy => $self->is_legacy } ],
   );
 }
 

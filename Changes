@@ -9,6 +9,7 @@ Revision history for {{$dist->name}}
   - Forked some [Git::*] components to ensure that commit/tags happen at 
     release time and push happens after release, so that if a push fails
     during a release doesn't muck everything else up.
+  - [ACPS::RPM] is no longer a subclass of [RPM]
 
 0.05      2012-07-26 12:48:53 America/New_York
   - fix some deps

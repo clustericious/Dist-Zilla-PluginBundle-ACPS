@@ -13,11 +13,22 @@ with 'Dist::Zilla::Role::AfterRelease';
 
 use namespace::autoclean;
 
+has legacy => (
+  is      => 'ro',
+  isa     => 'Bool',
+  default => 0,
+);
+
 sub before_release
 {
   my $self = shift;
 
   my $git = Git::Wrapper->new($self->zilla->root);
+  
+  if($self->legacy)
+  { $self->log("legacy release") }
+  else
+  { $self->log("new-fangled release") }
   
   my $version = $self->zilla->version;
   foreach my $tag ($version, "dist-$version")
@@ -34,9 +45,8 @@ sub release
   my $version = $self->zilla->version;
   my $git = Git::Wrapper->new($self->zilla->root);
 
-  if(defined $self->zilla->plugin_named('@ACPS/ACPS::Git::CommitBuild'))
+  if(!$self->legacy)
   {
-    $self->log("with release/master");
     $self->log("tag $version");
     $git->tag("-m", "version $version", $version, 'release/master');
     $self->log("tag dist-$version");
@@ -55,9 +65,8 @@ sub after_release
   
   my $git = Git::Wrapper->new($self->zilla->root);
   
-  if(defined $self->zilla->plugin_named('@ACPS/ACPS::Git::CommitBuild'))
+  if(!$self->legacy)
   {
-    $self->log("with release/master");
     $self->log("push");
     $git->push("public");
     $git->push("public", "release/master");

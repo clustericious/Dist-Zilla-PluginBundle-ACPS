@@ -12,7 +12,7 @@ use Template;
 # ABSTRACT: RPM Dist::Zilla plugin for ACPS
 # VERSION
 
-extends 'Dist::Zilla::Plugin::RPM';
+with 'Dist::Zilla::Role::Plugin';
 
 use namespace::autoclean;
 
@@ -137,9 +137,30 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
+=head1 SYNOPSIS
+
+ [ACPS::RPM]
+ ; spec_template = foo.spec.tt ; by default this is pulled @ACPS
+ ; prefer_make_maker = 1       ; default is 0, set to 1 to use MakeMaker instead of Module::Build
+ ; filter_requires = '^perl(Filter::Module)$' ; specify requires which should be filtered out.
+
 =head1 DESCRIPTION
 
-This in herits from L<Dist::Zilla::Plugin::RPM>, and changes the
-default spec template.
+This builds rpms for the ACPS environment.
+
+=head1 OPTIONS
+
+=head2 spec_template
+
+The TT2 template for generating the spec file.  If not specified on
+that comes bundled with @ACPS is used.
+
+=head2 prefer_make_maker
+
+This generates a spec file which prefers MakeMaker over Moduke::Build.
+
+=head2 filter_requires
+
+Specify requirements to filter out.  May be specified multiple times.
 
 =cut
