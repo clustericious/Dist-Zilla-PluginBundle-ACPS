@@ -1,0 +1,33 @@
+Revision history for Dist-Zilla-PluginBundle-ACPS
+
+0.06      2012-08-22 10:43:06 America/New_York
+  - added ACPS::RPM and dzil rpmspec command
+  - @ACPS::Legacy and ACPS::Legacy for non Dist::Zilla aware dists
+  - create .dzil/config.ini if it doesn't already exist.
+  - print out useful diagnostic when dzil rpmspec is run without the RPM plugin
+  - use Template instead of Text::Template for spec template.
+  - Forked some [Git::*] components to ensure that commit/tags happen at 
+    release time and push happens after release, so that if a push fails
+    during a release doesn't muck everything else up.
+  - [ACPS::RPM] is no longer a subclass of [RPM]
+
+0.05      2012-07-26 12:48:53 America/New_York
+  - fix some deps
+  - basic rpm support
+
+0.04      2012-07-25 16:20:49 America/New_York
+  - add @Git back in
+  - add VERSION to each module's POD
+  - added ACPS minting profile.
+
+0.03      2012-07-25 13:04:59 America/New_York
+  - self hosting
+  - remove git from bundle
+  - automatically create remote public
+  - fail to release if there is already a tag for this version
+
+0.02      2012-07-25 11:57:01 America/New_York
+  - added TODO
+
+0.01      2012-07-25 11:47:41 America/New_York
+  - initial version
