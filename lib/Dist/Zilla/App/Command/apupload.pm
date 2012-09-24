@@ -1,4 +1,4 @@
-package Dist::Zilla::App::Command::apbuild;
+package Dist::Zilla::App::Command::apupload;
 
 use strict;
 use warnings;
@@ -10,7 +10,7 @@ our $VERSION = '0.07'; # VERSION
 
 use Dist::Zilla::App -command;
 
-sub abstract { 'generate RPM file for your dist' }
+sub abstract { 'upload RPM file for your dist to a RestYum server' }
 
 sub execute {
     my($self,$opt,$args) = @_;
@@ -27,7 +27,7 @@ sub execute {
     
     $self->zilla->build_archive;
 
-    $plugin->mk_rpm;
+    $plugin->upload_rpm($plugin->mk_rpm);
 }
 
 1;
@@ -38,7 +38,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::App::Command::apbuild - generate RPM file for your dist
+Dist::Zilla::App::Command::apupload - generate RPM file for your dist
 
 =head1 VERSION
 
@@ -46,7 +46,7 @@ version 0.07
 
 =head1 SYNOPSIS
 
-  dzil apbuild
+  dzil apupload
 
 =head1 AUTHOR
 

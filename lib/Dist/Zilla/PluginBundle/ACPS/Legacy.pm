@@ -4,7 +4,7 @@ use Moose;
 use v5.10;
 
 # ABSTRACT: Dist::Zilla ACPS bundle for dists not originally written with Dist::Zilla in mind
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 extends 'Dist::Zilla::PluginBundle::ACPS';
 
@@ -22,7 +22,6 @@ sub plugin_list {
 
     TestRelease
     ConfirmRelease
-    ACPS::Release
     ACPS::Legacy
 
     PodVersion
@@ -49,7 +48,7 @@ Dist::Zilla::PluginBundle::ACPS::Legacy - Dist::Zilla ACPS bundle for dists not 
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 

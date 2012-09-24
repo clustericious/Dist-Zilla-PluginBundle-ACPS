@@ -10,7 +10,7 @@ use List::MoreUtils qw( uniq );
 use Template;
 
 # ABSTRACT: RPM Dist::Zilla plugin for ACPS
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 with 'Dist::Zilla::Role::Plugin';
 
@@ -131,6 +131,15 @@ sub install_rpm
   `ap install @rpms`;
 }
 
+sub upload_rpm
+{
+  my($self, @rpms) = @_;
+  $self->log("uploading rpm: " . $_) for @rpms;
+  `ap upload @rpms`;
+  $self->log("createrepo on build");
+  `restyumclient-createrepo build`;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
@@ -145,7 +154,7 @@ Dist::Zilla::Plugin::ACPS::RPM - RPM Dist::Zilla plugin for ACPS
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

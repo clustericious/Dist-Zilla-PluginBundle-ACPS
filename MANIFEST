@@ -11,6 +11,7 @@ dist.ini
 lib/Dist/Zilla/App/Command/apbuild.pm
 lib/Dist/Zilla/App/Command/apinstall.pm
 lib/Dist/Zilla/App/Command/apspec.pm
+lib/Dist/Zilla/App/Command/apupload.pm
 lib/Dist/Zilla/MintingProfile/ACPS.pm
 lib/Dist/Zilla/Plugin/ACPS/Git/Commit.pm
 lib/Dist/Zilla/Plugin/ACPS/Git/CommitBuild.pm

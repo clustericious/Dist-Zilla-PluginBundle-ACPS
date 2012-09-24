@@ -1,5 +1,8 @@
 Revision history for Dist-Zilla-PluginBundle-ACPS
 
+0.07      2012-09-24 11:24:37 America/New_York
+  - added dzil apupload command
+
 0.06      2012-08-22 10:43:06 America/New_York
   - added ACPS::RPM and dzil rpmspec command
   - @ACPS::Legacy and ACPS::Legacy for non Dist::Zilla aware dists

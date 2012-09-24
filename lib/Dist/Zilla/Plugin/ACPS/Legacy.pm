@@ -5,7 +5,7 @@ use v5.10;
 use autodie;
 
 # ABSTRACT: Dist::Zilla plugin for ACPS CIs that are pre-Dist::Zilla
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 with qw(
   Dist::Zilla::Role::VersionProvider
@@ -47,7 +47,7 @@ Dist::Zilla::Plugin::ACPS::Legacy - Dist::Zilla plugin for ACPS CIs that are pre
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
