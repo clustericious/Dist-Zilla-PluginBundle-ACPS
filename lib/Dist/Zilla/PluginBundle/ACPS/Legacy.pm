@@ -22,7 +22,6 @@ sub plugin_list {
 
     TestRelease
     ConfirmRelease
-    ACPS::Release
     ACPS::Legacy
 
     PodVersion

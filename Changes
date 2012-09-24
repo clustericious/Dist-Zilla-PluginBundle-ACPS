@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - added dzil apupload command
+
+0.06      2012-08-22 10:43:06 America/New_York
   - added ACPS::RPM and dzil rpmspec command
   - @ACPS::Legacy and ACPS::Legacy for non Dist::Zilla aware dists
   - create .dzil/config.ini if it doesn't already exist.

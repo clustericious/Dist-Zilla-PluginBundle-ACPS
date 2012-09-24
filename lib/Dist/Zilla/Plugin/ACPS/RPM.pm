@@ -131,6 +131,15 @@ sub install_rpm
   `ap install @rpms`;
 }
 
+sub upload_rpm
+{
+  my($self, @rpms) = @_;
+  $self->log("uploading rpm: " . $_) for @rpms;
+  `ap upload @rpms`;
+  $self->log("createrepo on build");
+  `restyumclient-createrepo build`;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
