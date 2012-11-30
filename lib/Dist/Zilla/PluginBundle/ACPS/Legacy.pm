@@ -25,7 +25,6 @@ sub plugin_list {
     ACPS::Legacy
 
     PodVersion
-    AutoPrereqs
     OurPkgVersion
   )
 }
@@ -48,6 +47,7 @@ L<MetaYAML|Dist::Zilla::Plugin::MetaYAML>,
 L<MetaJSON|Dist::Zilla::Plugin::MetaJSON>,
 L<Readme|Dist::Zilla::Plugin::Readme>,
 L<NextRelease|Dist::Zilla::Plugin::NextRelease>,
+L<AutoPrereqs|Dist::Zilla::Plugin::AutoPrereqs>,
 L<ModuleBuild|Dist::Zilla::Plugin::ModuleBuild> or
 L<MakeMaker|Dist::Zilla::Plugin::MakeMaker>, as these are usually maintained by hand or via the Build.PL
 in older ACPS distributions.

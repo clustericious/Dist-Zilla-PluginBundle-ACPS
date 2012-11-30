@@ -3,6 +3,7 @@ package Dist::Zilla::Plugin::ACPS::Legacy;
 use Moose;
 use v5.10;
 use autodie;
+use JSON qw( from_json );
 
 # ABSTRACT: Dist::Zilla plugin for ACPS CIs that are pre-Dist::Zilla
 # VERSION
@@ -10,6 +11,7 @@ use autodie;
 with qw(
   Dist::Zilla::Role::VersionProvider
   Dist::Zilla::Role::BuildPL
+  Dist::Zilla::Role::PrereqSource
 );
 
 use namespace::autoclean;
@@ -31,6 +33,27 @@ sub provide_version
 sub setup_installer
 {
   # Build.PL is gathered from a static file.
+}
+
+sub register_prereqs
+{
+  my $self = shift;
+  
+  my $meta = eval { from_json($self->zilla->root->file('META.json')->slurp) };
+  die "unable to load META.json, run ./Build distmeta to generate it: $@" if $@ or !defined $meta;
+
+  foreach my $phase (qw( configure build runtime ))
+  {
+    if(exists $meta->{prereqs}->{$phase})
+    {
+      $self->zilla->log("using $phase prereqs from META.json");
+      $self->zilla->register_prereqs({ phase => $phase }, %{ $meta->{prereqs}->{$phase}->{requires} });
+    }
+    else
+    {
+      $self->zilla->log("WARNING: can't find $phase prereqs from META.json");
+    }
+  }
 }
 
 __PACKAGE__->meta->make_immutable;

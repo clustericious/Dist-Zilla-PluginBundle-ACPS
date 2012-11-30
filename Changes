@@ -1,6 +1,11 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.08      2012-10-09 10:11:31 America/New_York
+  - for [@ACPS::Legacy] / [ACPS::Legacy] use prereqs from META.json instead of detect
+
+0.07      2012-09-24 11:24:37 America/New_York
   - added dzil apupload command
 
 0.06      2012-08-22 10:43:06 America/New_York
