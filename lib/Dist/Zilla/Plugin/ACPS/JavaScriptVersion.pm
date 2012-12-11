@@ -1,5 +1,6 @@
 package Dist::Zilla::Plugin::ACPS::JavaScriptVersion;
 
+# ABSTRACT: inject version into JavaScript files
 # VERSION
 
 use Moose;
@@ -55,10 +56,6 @@ sub munge_file
 __PACKAGE__->meta->make_immutable;
 
 1;
-
-=head1 NAME
-
-Dist::Zilla::Plugin::ACPS::JavaScriptVersion
 
 =head1 SYNOPSIS
 
