@@ -4,7 +4,7 @@ use Moose;
 use v5.10;
 
 # ABSTRACT: Dist::Zilla ACPS bundle for dists not originally written with Dist::Zilla in mind
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 extends 'Dist::Zilla::PluginBundle::ACPS';
 
@@ -47,7 +47,7 @@ Dist::Zilla::PluginBundle::ACPS::Legacy - Dist::Zilla ACPS bundle for dists not 
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 
@@ -66,7 +66,7 @@ This plugin bundle also includes L<ACPS::Legacy|Dist::Zilla::Plugin::ACPS::Legac
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -6,7 +6,7 @@ use Carp;
 use File::HomeDir;
 
 # ABSTRACT: install RPM file for your dist
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 use Dist::Zilla::App -command;
 
@@ -42,7 +42,7 @@ Dist::Zilla::App::Command::apinstall - install RPM file for your dist
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -50,7 +50,7 @@ version 0.08
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 

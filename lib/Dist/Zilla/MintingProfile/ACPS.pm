@@ -6,7 +6,7 @@ use File::HomeDir;
 use File::Spec;
 
 # ABSTRACT: ACPS Dist::Zilla minting profile
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 with qw( Dist::Zilla::Role::MintingProfile::ShareDir );
 
@@ -59,7 +59,7 @@ Dist::Zilla::MintingProfile::ACPS - ACPS Dist::Zilla minting profile
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -71,7 +71,7 @@ Minting profile for ACPS.
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 

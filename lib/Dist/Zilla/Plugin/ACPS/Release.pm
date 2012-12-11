@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::ACPS::Release;
 
 # ABSTRACT: release plugin for ACPS
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 use Moose;
 use v5.10;
@@ -96,7 +96,7 @@ Dist::Zilla::Plugin::ACPS::Release - release plugin for ACPS
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 
@@ -110,7 +110,7 @@ then bump the version in dist.ini and run dzil release again.
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 

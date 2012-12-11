@@ -1,10 +1,10 @@
 {
    "abstract" : "the basic plugins to maintain and release ACPS dists",
    "author" : [
-      "Graham Ollis <gollis@sesda2.com>"
+      "Graham Ollis <gollis@sesda3.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "restricted"
    ],
@@ -40,6 +40,7 @@
             "Dist::Zilla::Role::AfterRelease" : "0",
             "Dist::Zilla::Role::BeforeRelease" : "0",
             "Dist::Zilla::Role::BuildPL" : "0",
+            "Dist::Zilla::Role::FileMunger" : "0",
             "Dist::Zilla::Role::Git::DirtyFiles" : "0",
             "Dist::Zilla::Role::Git::Repo" : "0",
             "Dist::Zilla::Role::MintingProfile::ShareDir" : "0",
@@ -83,6 +84,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.08"
+   "version" : "0.09"
 }
 

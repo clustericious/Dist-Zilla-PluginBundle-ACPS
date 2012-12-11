@@ -8,7 +8,7 @@ use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::OurPkgVersion;
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -78,7 +78,7 @@ Dist::Zilla::PluginBundle::ACPS - the basic plugins to maintain and release ACPS
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 
@@ -112,7 +112,7 @@ It is equivalent to this:
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 

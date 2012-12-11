@@ -12,7 +12,7 @@ install_share module => "Dist::Zilla::MintingProfile::ACPS", "profiles";
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "the basic plugins to maintain and release ACPS dists",
-  "AUTHOR" => "Graham Ollis <gollis\@sesda2.com>",
+  "AUTHOR" => "Graham Ollis <gollis\@sesda3.com>",
   "BUILD_REQUIRES" => {
     "Module::Build" => "0.3601",
     "Test::More" => 0
@@ -39,6 +39,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::BeforeRelease" => 0,
     "Dist::Zilla::Role::BuildPL" => 0,
+    "Dist::Zilla::Role::FileMunger" => 0,
     "Dist::Zilla::Role::Git::DirtyFiles" => 0,
     "Dist::Zilla::Role::Git::Repo" => 0,
     "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
@@ -73,7 +74,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.08",
+  "VERSION" => "0.09",
   "test" => {
     "TESTS" => "t/*.t"
   }

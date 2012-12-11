@@ -17,10 +17,10 @@ my %module_build_args = (
   },
   "dist_abstract" => "the basic plugins to maintain and release ACPS dists",
   "dist_author" => [
-    "Graham Ollis <gollis\@sesda2.com>"
+    "Graham Ollis <gollis\@sesda3.com>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-ACPS",
-  "dist_version" => "0.08",
+  "dist_version" => "0.09",
   "license" => "restrictive",
   "module_name" => "Dist::Zilla::PluginBundle::ACPS",
   "recommends" => {},
@@ -38,6 +38,7 @@ my %module_build_args = (
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::BeforeRelease" => 0,
     "Dist::Zilla::Role::BuildPL" => 0,
+    "Dist::Zilla::Role::FileMunger" => 0,
     "Dist::Zilla::Role::Git::DirtyFiles" => 0,
     "Dist::Zilla::Role::Git::Repo" => 0,
     "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,

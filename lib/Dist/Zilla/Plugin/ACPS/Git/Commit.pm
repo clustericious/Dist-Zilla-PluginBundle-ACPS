@@ -13,7 +13,7 @@ use warnings;
 package Dist::Zilla::Plugin::ACPS::Git::Commit;
 
 # ABSTRACT: commit dirty files
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 use File::Temp           qw{ tempfile };
 use Git::Wrapper;
@@ -134,7 +134,7 @@ Dist::Zilla::Plugin::ACPS::Git::Commit - commit dirty files
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -237,7 +237,7 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 
