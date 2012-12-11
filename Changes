@@ -1,8 +1,23 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.08      2012-10-09 10:11:31 America/New_York
+  - for [@ACPS::Legacy] / [ACPS::Legacy] use prereqs from META.json instead of detect
+
+0.07      2012-09-24 11:24:37 America/New_York
+  - added dzil apupload command
+
+0.06      2012-08-22 10:43:06 America/New_York
   - added ACPS::RPM and dzil rpmspec command
   - @ACPS::Legacy and ACPS::Legacy for non Dist::Zilla aware dists
+  - create .dzil/config.ini if it doesn't already exist.
+  - print out useful diagnostic when dzil rpmspec is run without the RPM plugin
+  - use Template instead of Text::Template for spec template.
+  - Forked some [Git::*] components to ensure that commit/tags happen at 
+    release time and push happens after release, so that if a push fails
+    during a release doesn't muck everything else up.
+  - [ACPS::RPM] is no longer a subclass of [RPM]
 
 0.05      2012-07-26 12:48:53 America/New_York
   - fix some deps

@@ -1,15 +1,16 @@
-package Dist::Zilla::App::Command::rpmspec;
+package Dist::Zilla::App::Command::apspec;
 
 # forked from Dist::Zilla::App::Command::mkrpmspec
 
 use strict;
 use warnings;
 use Carp;
-
-use Dist::Zilla::App -command;
+use File::HomeDir;
 
 # ABSTRACT: generate RPM spec file from your template
 # VERSION
+
+use Dist::Zilla::App -command;
 
 sub abstract { 'generate RPM spec file from your build template' }
 
@@ -26,28 +27,30 @@ sub execute {
 
     $filename ||= $self->zilla->name . '.spec';
 
-    my $outfile = Path::Class::File->new($filename);
+    my $outfile = Path::Class::File->new(File::HomeDir->my_home, qw( rpmbuild SPECS ), $filename);
     my $out = $outfile->openw;
-    print $out $self->zilla->plugin_named('ACPS::RPM')->mk_spec(
-        sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version)
+    
+    my $plugin = $self->zilla->plugin_named('ACPS::RPM');
+    
+    unless(defined $plugin)
+    {
+        $self->log("[apspec] add this to your dist.ini:");
+        $self->log("[apspec] [ACPS::RPM]");
+        $self->log("[apspec] ;ignore_build_deps = 1 ; uncomment to ignore deps");
+        die "could not find ACPS::RPM plugin";
+    }
+    
+    print $out $plugin->mk_spec(
+        sprintf('%s-%s.tar.gz',$self->zilla->name,$self->zilla->version),
+        $outfile,
     );
-
-    $self->log("spec file written to $outfile");
 }
 
 1;
 
-
-
-=pod
-
-=head1 NAME
-
-Dist::Zilla::App::Command::rpmspec - generate RPM spec file from your template
-
 =head1 SYNOPSIS
 
-  dzil rpmspec [filename]
+  dzil apspec [filename]
 
 =head1 DESCRIPTION
 
@@ -58,8 +61,8 @@ build without having to run dzil each time.
 
 =head1 EXAMPLE
 
-  $ dzil rpmspec
-  $ dzil rpmspec /path/to/foo.spec
+  $ dzil apspec
+  $ dzil apspec /path/to/foo.spec
 
 =head1 OPTIONS
 
@@ -67,18 +70,4 @@ build without having to run dzil each time.
 
 The filename to write the specfile to.
 
-=head1 AUTHOR
-
-Stephen Clouse <stephenclouse@gmail.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Stephen Clouse.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
 =cut
-
-
-__END__
