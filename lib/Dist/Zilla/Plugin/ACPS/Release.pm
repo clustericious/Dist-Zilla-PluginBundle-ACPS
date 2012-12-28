@@ -48,7 +48,7 @@ sub release
   if(!$self->legacy)
   {
     $self->log("tag $version");
-    $git->tag("-m", "version $version", $version, 'release/master');
+    $git->tag("-m", "version $version", $version, 'release');
     $self->log("tag dist-$version");
     $git->tag("-m", "version $version", "dist-$version", 'master');
   }
@@ -69,10 +69,10 @@ sub after_release
   {
     $self->log("push");
     $git->push("public");
-    $git->push("public", "release/master");
+    $git->push("public", "release");
     $self->log("push tags");
     $git->push("public", "--tags");
-    $git->push("public", "--tags", "release/master");
+    $git->push("public", "--tags", "release");
   }
   else
   {
