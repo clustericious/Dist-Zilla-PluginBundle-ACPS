@@ -39,8 +39,8 @@ use String::Formatter method_stringf => {
 };
 
 with 'Dist::Zilla::Role::Releaser';
-with 'Dist::Zilla::Role::Git::DirtyFiles';
 with 'Dist::Zilla::Role::Git::Repo';
+with 'Dist::Zilla::Role::Git::DirtyFiles';
 
 # -- attributes
 
