@@ -57,7 +57,7 @@ with 'Dist::Zilla::Role::Git::Repo';
 
 # -- attributes
 
-has release_branch  => ( ro, isa => Str, default => 'release/%b', required => 1 );
+has release_branch  => ( ro, isa => Str, default => 'release', required => 1 );
 has release_message => ( ro, isa => Str, default => 'build release %v', required => 1 );
 has build_root => ( rw, coerce => 1, isa => Dir );
 has _git => (rw, weak_ref => 1);
