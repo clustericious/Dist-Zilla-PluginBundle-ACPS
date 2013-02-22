@@ -10,7 +10,7 @@ configure_requires:
   File::ShareDir::Install: 0.03
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921'
 license: restrictive
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -29,7 +29,6 @@ requires:
   Dist::Zilla::Role::AfterRelease: 0
   Dist::Zilla::Role::BeforeRelease: 0
   Dist::Zilla::Role::BuildPL: 0
-  Dist::Zilla::Role::FileMunger: 0
   Dist::Zilla::Role::Git::DirtyFiles: 0
   Dist::Zilla::Role::Git::Repo: 0
   Dist::Zilla::Role::MintingProfile::ShareDir: 0
@@ -64,4 +63,4 @@ requires:
   perl: v5.10.0
   strict: 0
   warnings: 0
-version: 0.09
+version: 0.10

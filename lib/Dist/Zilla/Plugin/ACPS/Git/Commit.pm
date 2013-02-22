@@ -13,7 +13,7 @@ use warnings;
 package Dist::Zilla::Plugin::ACPS::Git::Commit;
 
 # ABSTRACT: commit dirty files
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 use File::Temp           qw{ tempfile };
 use Git::Wrapper;
@@ -39,8 +39,8 @@ use String::Formatter method_stringf => {
 };
 
 with 'Dist::Zilla::Role::Releaser';
-with 'Dist::Zilla::Role::Git::DirtyFiles';
 with 'Dist::Zilla::Role::Git::Repo';
+with 'Dist::Zilla::Role::Git::DirtyFiles';
 
 # -- attributes
 
@@ -134,7 +134,7 @@ Dist::Zilla::Plugin::ACPS::Git::Commit - commit dirty files
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

@@ -11,7 +11,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::ACPS::Git::CommitBuild;
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 # ABSTRACT: checkin build results on separate branch
 
 use Git::Wrapper 0.021;
@@ -57,7 +57,7 @@ with 'Dist::Zilla::Role::Git::Repo';
 
 # -- attributes
 
-has release_branch  => ( ro, isa => Str, default => 'release/%b', required => 1 );
+has release_branch  => ( ro, isa => Str, default => 'release', required => 1 );
 has release_message => ( ro, isa => Str, default => 'build release %v', required => 1 );
 has build_root => ( rw, coerce => 1, isa => Dir );
 has _git => (rw, weak_ref => 1);
@@ -151,7 +151,7 @@ Dist::Zilla::Plugin::ACPS::Git::CommitBuild - checkin build results on separate 
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

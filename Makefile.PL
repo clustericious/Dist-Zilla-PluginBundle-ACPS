@@ -39,7 +39,6 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::BeforeRelease" => 0,
     "Dist::Zilla::Role::BuildPL" => 0,
-    "Dist::Zilla::Role::FileMunger" => 0,
     "Dist::Zilla::Role::Git::DirtyFiles" => 0,
     "Dist::Zilla::Role::Git::Repo" => 0,
     "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
@@ -74,7 +73,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.09",
+  "VERSION" => "0.10",
   "test" => {
     "TESTS" => "t/*.t"
   }

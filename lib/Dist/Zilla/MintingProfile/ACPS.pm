@@ -6,7 +6,7 @@ use File::HomeDir;
 use File::Spec;
 
 # ABSTRACT: ACPS Dist::Zilla minting profile
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 with qw( Dist::Zilla::Role::MintingProfile::ShareDir );
 
@@ -59,7 +59,7 @@ Dist::Zilla::MintingProfile::ACPS - ACPS Dist::Zilla minting profile
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

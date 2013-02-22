@@ -10,7 +10,7 @@ use List::MoreUtils qw( uniq );
 use Template;
 
 # ABSTRACT: RPM Dist::Zilla plugin for ACPS
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 with 'Dist::Zilla::Role::Plugin';
 
@@ -154,7 +154,7 @@ Dist::Zilla::Plugin::ACPS::RPM - RPM Dist::Zilla plugin for ACPS
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
