@@ -27,7 +27,6 @@ sub plugin_list {
     ExecDir
     ShareDir
     ModuleBuild
-    MakeMaker
     Manifest
     TestRelease
     ConfirmRelease
@@ -86,7 +85,6 @@ It is equivalent to this:
  [ExecDir]
  [ShareDir]
  [ModuleBuild]
- [MakeMaker]
  [Manifest]
  [TestRelease]
  [ConfirmRelease]
