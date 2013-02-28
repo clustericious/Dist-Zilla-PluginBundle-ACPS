@@ -18,7 +18,6 @@ sub plugin_list {
     License
     ExtraTests
     ExecDir
-    ShareDir
 
     TestRelease
     ConfirmRelease

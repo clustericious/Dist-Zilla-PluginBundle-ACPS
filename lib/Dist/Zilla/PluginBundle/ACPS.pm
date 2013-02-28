@@ -25,7 +25,6 @@ sub plugin_list {
     Readme
     ExtraTests
     ExecDir
-    ShareDir
     ModuleBuild
     Manifest
     TestRelease
@@ -83,7 +82,6 @@ It is equivalent to this:
  [Readme]
  [ExtraTests]
  [ExecDir]
- [ShareDir]
  [ModuleBuild]
  [Manifest]
  [TestRelease]
