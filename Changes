@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - move commands into its own dist
 
 0.13      2013-03-01 13:26:11 America/New_York
   - import File::ShareDir( dist_dir) where we need it
