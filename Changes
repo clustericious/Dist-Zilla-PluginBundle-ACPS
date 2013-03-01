@@ -3,6 +3,7 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
   - rm [MakeMaker] from [@ACPS]
   - rm [ShareDir] from [@ACPS]
+  - mingint profiles for clustericiousa app, client and mbd_app
 
 0.10      2013-02-22 14:51:32 America/New_York
   - commit to release instead of release/master
