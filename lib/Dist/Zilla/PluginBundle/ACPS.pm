@@ -6,9 +6,10 @@ use Dist::Zilla;
 use Dist::Zilla::Plugin::PodWeaver;
 use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::OurPkgVersion;
+use Path::Class qw( file dir );
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -25,9 +26,7 @@ sub plugin_list {
     Readme
     ExtraTests
     ExecDir
-    ShareDir
     ModuleBuild
-    MakeMaker
     Manifest
     TestRelease
     ConfirmRelease
@@ -64,6 +63,34 @@ sub configure {
   );
 }
 
+sub share_dir
+{
+  my($class) = @_;
+  
+  state $dir;
+  
+  unless(defined $dir)
+  {
+    if(defined $ENV{DIST_ZILLA_PLUGINBUNDLE_ACPS})
+    { $dir = dir( $ENV{DIST_ZILLA_PLUGINBUNDLE_ACPS} ) }
+    elsif(defined $Dist::Zilla::PluginBundle::ACPS::VERSION)
+    { $dir = dir(dist_dir('Dist-Zilla-PluginBundle-ACPS')) }
+    else
+    { 
+      $dir = file(__FILE__)
+        ->absolute
+        ->dir
+        ->parent
+        ->parent
+        ->parent
+        ->parent
+        ->subdir('share');
+    }
+  }
+  
+  return $dir;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
@@ -78,7 +105,7 @@ Dist::Zilla::PluginBundle::ACPS - the basic plugins to maintain and release ACPS
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 DESCRIPTION
 
@@ -94,9 +121,7 @@ It is equivalent to this:
  [Readme]
  [ExtraTests]
  [ExecDir]
- [ShareDir]
  [ModuleBuild]
- [MakeMaker]
  [Manifest]
  [TestRelease]
  [ConfirmRelease]

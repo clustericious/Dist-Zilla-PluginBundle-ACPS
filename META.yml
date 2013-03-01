@@ -3,11 +3,11 @@ abstract: 'the basic plugins to maintain and release ACPS dists'
 author:
   - 'Graham Ollis <gollis@sesda3.com>'
 build_requires:
+  FindBin: 0
   Module::Build: 0.3601
+  Test::DZil: 0
   Test::More: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
-  File::ShareDir::Install: 0.03
   Module::Build: 0.3601
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921'
@@ -16,12 +16,17 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Dist-Zilla-PluginBundle-ACPS
+no_index:
+  directory:
+    - corpus
+    - share
 requires:
   Carp: 0
   Cwd: 0
   DateTime: 0
   Dist::Zilla: 0
   Dist::Zilla::App: 0
+  Dist::Zilla::MintingProfile::Clustericious: 0
   Dist::Zilla::Plugin::OurPkgVersion: 0
   Dist::Zilla::Plugin::PodWeaver: 0
   Dist::Zilla::PluginBundle::Git: 0
@@ -31,7 +36,7 @@ requires:
   Dist::Zilla::Role::BuildPL: 0
   Dist::Zilla::Role::Git::DirtyFiles: 0
   Dist::Zilla::Role::Git::Repo: 0
-  Dist::Zilla::Role::MintingProfile::ShareDir: 0
+  Dist::Zilla::Role::MintingProfile: 0
   Dist::Zilla::Role::Plugin: 0
   Dist::Zilla::Role::PluginBundle::Easy: 0
   Dist::Zilla::Role::PrereqSource: 0
@@ -63,4 +68,4 @@ requires:
   perl: v5.10.0
   strict: 0
   warnings: 0
-version: 0.10
+version: 0.11

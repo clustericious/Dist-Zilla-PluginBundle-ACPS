@@ -1,11 +1,11 @@
-package Dist::Zilla::Plugin::ACPS::Init;
+package Dist::Zilla::Plugin::ACPS::Mint;
 
 use Moose;
 use v5.10;
 use Git::Wrapper;
 
 # ABSTRACT: init plugin for ACPS
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 with 'Dist::Zilla::Role::AfterMint';
 
@@ -41,11 +41,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-Dist::Zilla::Plugin::ACPS::Init - init plugin for ACPS
+Dist::Zilla::Plugin::ACPS::Mint - init plugin for ACPS
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 DESCRIPTION
 

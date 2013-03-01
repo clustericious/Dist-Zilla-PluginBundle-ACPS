@@ -6,7 +6,7 @@ use Carp;
 use File::HomeDir;
 
 # ABSTRACT: generate RPM file for your dist
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 use Dist::Zilla::App -command;
 
@@ -42,7 +42,7 @@ Dist::Zilla::App::Command::apbuild - generate RPM file for your dist
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

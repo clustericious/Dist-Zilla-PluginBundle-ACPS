@@ -3,6 +3,7 @@ package Dist::Zilla::Plugin::ACPS::RPM;
 use Moose;
 use v5.10;
 use Dist::Zilla::MintingProfile::ACPS;
+use Dist::Zilla::PluginBundle::ACPS;
 use Path::Class qw( dir file );
 use File::HomeDir;
 use File::Copy qw( copy );
@@ -10,7 +11,7 @@ use List::MoreUtils qw( uniq );
 use Template;
 
 # ABSTRACT: RPM Dist::Zilla plugin for ACPS
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 with 'Dist::Zilla::Role::Plugin';
 
@@ -18,7 +19,13 @@ use namespace::autoclean;
 
 has 'spec_template' => (
   is => 'ro',
-  default => sub { Dist::Zilla::MintingProfile::ACPS->profile_dir . '/default/dist.spec.tt' },
+  default => sub { 
+    Dist::Zilla::PluginBundle::ACPS
+      ->share_dir
+      ->subdir('rpm')
+      ->file('dist.spec.tt')
+      ->stringify;
+  },
 );
 
 has 'prefer_make_maker' => (
@@ -154,7 +161,7 @@ Dist::Zilla::Plugin::ACPS::RPM - RPM Dist::Zilla plugin for ACPS
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

@@ -4,15 +4,14 @@ use Moose;
 use v5.10;
 use File::HomeDir;
 use File::Spec;
+use Dist::Zilla::PluginBundle::ACPS;
 
 # ABSTRACT: ACPS Dist::Zilla minting profile
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
-with qw( Dist::Zilla::Role::MintingProfile::ShareDir );
+with qw( Dist::Zilla::Role::MintingProfile );
 
-before profile_dir => sub {
-  my($self) = @_;
-
+my $prep = sub {
   use autodie;
 
   my $dzil_dir = File::Spec->catdir(File::HomeDir->my_home, '.dzil');
@@ -44,6 +43,16 @@ before profile_dir => sub {
   }
 };
 
+sub profile_dir
+{
+  my($self, $name) = @_;
+  $prep->();
+  Dist::Zilla::PluginBundle::ACPS
+    ->share_dir
+    ->subdir('profiles')
+    ->subdir($name);
+}
+
 no Moose;
 __PACKAGE__->meta->make_immutable;
 
@@ -59,7 +68,7 @@ Dist::Zilla::MintingProfile::ACPS - ACPS Dist::Zilla minting profile
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

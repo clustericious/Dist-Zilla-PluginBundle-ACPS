@@ -8,7 +8,7 @@ use Carp;
 use File::HomeDir;
 
 # ABSTRACT: generate RPM spec file from your template
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 use Dist::Zilla::App -command;
 
@@ -58,7 +58,7 @@ Dist::Zilla::App::Command::apspec - generate RPM spec file from your template
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

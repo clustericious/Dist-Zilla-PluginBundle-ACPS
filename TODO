@@ -1,2 +1,0 @@
-. Custom RPMS requires excludes
-. Exclude /usr/bin/env by default

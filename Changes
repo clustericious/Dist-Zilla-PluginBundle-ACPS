@@ -1,11 +1,15 @@
 Revision history for Dist-Zilla-PluginBundle-ACPS
 
+0.11      2013-03-01 11:06:47 America/New_York
+  - rm [MakeMaker] from [@ACPS]
+  - rm [ShareDir] from [@ACPS]
+  - mingint profiles for clustericiousa app, client and mbd_app
+
 0.10      2013-02-22 14:51:32 America/New_York
   - commit to release instead of release/master
   - removed [ACPS::JavaScriptVersion]
   - default profile to include [RemovePrereqs], [MinimumPerl] and commented 
     out [Prereqs] and [ACPS::RPM] by default
-  
 
 0.09      2012-12-11 12:20:22 America/New_York
   - added [ACPS::JavaScriptVersion]

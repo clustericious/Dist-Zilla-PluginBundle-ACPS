@@ -7,12 +7,12 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
+    "FindBin" => 0,
     "Module::Build" => "0.3601",
+    "Test::DZil" => 0,
     "Test::More" => 0
   },
   "configure_requires" => {
-    "ExtUtils::MakeMaker" => "6.30",
-    "File::ShareDir::Install" => "0.03",
     "Module::Build" => "0.3601"
   },
   "dist_abstract" => "the basic plugins to maintain and release ACPS dists",
@@ -20,7 +20,7 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda3.com>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-ACPS",
-  "dist_version" => "0.10",
+  "dist_version" => "0.11",
   "license" => "restrictive",
   "module_name" => "Dist::Zilla::PluginBundle::ACPS",
   "recommends" => {},
@@ -31,6 +31,7 @@ my %module_build_args = (
     "DateTime" => 0,
     "Dist::Zilla" => 0,
     "Dist::Zilla::App" => 0,
+    "Dist::Zilla::MintingProfile::Clustericious" => 0,
     "Dist::Zilla::Plugin::OurPkgVersion" => 0,
     "Dist::Zilla::Plugin::PodWeaver" => 0,
     "Dist::Zilla::PluginBundle::Git" => 0,
@@ -40,7 +41,7 @@ my %module_build_args = (
     "Dist::Zilla::Role::BuildPL" => 0,
     "Dist::Zilla::Role::Git::DirtyFiles" => 0,
     "Dist::Zilla::Role::Git::Repo" => 0,
-    "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
+    "Dist::Zilla::Role::MintingProfile" => 0,
     "Dist::Zilla::Role::Plugin" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Dist::Zilla::Role::PrereqSource" => 0,
@@ -75,9 +76,7 @@ my %module_build_args = (
   },
   "script_files" => [],
   "share_dir" => {
-    "module" => {
-      "Dist::Zilla::MintingProfile::ACPS" => "profiles"
-    }
+    "dist" => "share"
   }
 );
 
