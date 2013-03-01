@@ -67,6 +67,8 @@ sub after_release
   
   if(!$self->legacy)
   {
+    $self->log("update Changes");
+    $git->commit({ message => "update Changes" }, 'Changes');
     $self->log("push");
     $git->push("public");
     $git->push("public", "release");
