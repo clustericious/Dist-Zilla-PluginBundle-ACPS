@@ -20,17 +20,15 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda3.com>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-ACPS",
-  "dist_version" => "0.13",
+  "dist_version" => "0.14",
   "license" => "restrictive",
   "module_name" => "Dist::Zilla::PluginBundle::ACPS",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Carp" => 0,
     "Cwd" => 0,
     "DateTime" => 0,
     "Dist::Zilla" => 0,
-    "Dist::Zilla::App" => 0,
     "Dist::Zilla::MintingProfile::Clustericious" => 0,
     "Dist::Zilla::Plugin::OurPkgVersion" => 0,
     "Dist::Zilla::Plugin::PodWeaver" => 0,
