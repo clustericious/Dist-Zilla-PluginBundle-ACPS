@@ -3,6 +3,7 @@ package Dist::Zilla::Plugin::ACPS::RPM;
 use Moose;
 use v5.10;
 use Dist::Zilla::MintingProfile::ACPS;
+use Dist::Zilla::PluginBundle::ACPS;
 use Path::Class qw( dir file );
 use File::HomeDir;
 use File::Copy qw( copy );
@@ -19,7 +20,7 @@ use namespace::autoclean;
 has 'spec_template' => (
   is => 'ro',
   default => sub { 
-    Dist::Zilla::MintingProfile::ACPS
+    Dist::Zilla::PluginBundle::ACPS
       ->share_dir
       ->subdir('rpm')
       ->file('dist.spec.tt')
