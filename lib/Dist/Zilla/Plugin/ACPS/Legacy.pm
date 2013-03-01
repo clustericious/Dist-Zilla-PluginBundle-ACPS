@@ -6,7 +6,7 @@ use autodie;
 use JSON qw( from_json );
 
 # ABSTRACT: Dist::Zilla plugin for ACPS CIs that are pre-Dist::Zilla
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 with qw(
   Dist::Zilla::Role::VersionProvider
@@ -60,7 +60,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
+__END__
 
 =pod
 
@@ -70,7 +70,7 @@ Dist::Zilla::Plugin::ACPS::Legacy - Dist::Zilla plugin for ACPS CIs that are pre
 
 =head1 VERSION
 
-version 0.11
+version 0.13
 
 =head1 DESCRIPTION
 
@@ -95,7 +95,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
-
-__END__
-

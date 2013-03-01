@@ -7,7 +7,7 @@ use File::Spec;
 use Dist::Zilla::PluginBundle::ACPS;
 
 # ABSTRACT: ACPS Dist::Zilla minting profile
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 with qw( Dist::Zilla::Role::MintingProfile );
 
@@ -58,7 +58,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
+__END__
 
 =pod
 
@@ -68,7 +68,7 @@ Dist::Zilla::MintingProfile::ACPS - ACPS Dist::Zilla minting profile
 
 =head1 VERSION
 
-version 0.11
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -88,7 +88,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
-
-__END__
-

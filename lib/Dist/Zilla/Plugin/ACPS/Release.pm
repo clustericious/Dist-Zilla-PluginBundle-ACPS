@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::ACPS::Release;
 
 # ABSTRACT: release plugin for ACPS
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 use Moose;
 use v5.10;
@@ -86,7 +86,7 @@ sub after_release
 __PACKAGE__->meta->make_immutable;
 1;
 
-
+__END__
 
 =pod
 
@@ -96,7 +96,7 @@ Dist::Zilla::Plugin::ACPS::Release - release plugin for ACPS
 
 =head1 VERSION
 
-version 0.11
+version 0.13
 
 =head1 DESCRIPTION
 
@@ -118,7 +118,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
-
-__END__
-

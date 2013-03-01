@@ -4,7 +4,7 @@ use Moose;
 use v5.10;
 
 # ABSTRACT: Dist::Zilla ACPS bundle for dists not originally written with Dist::Zilla in mind
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 extends 'Dist::Zilla::PluginBundle::ACPS';
 
@@ -36,7 +36,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
+__END__
 
 =pod
 
@@ -46,7 +46,7 @@ Dist::Zilla::PluginBundle::ACPS::Legacy - Dist::Zilla ACPS bundle for dists not 
 
 =head1 VERSION
 
-version 0.11
+version 0.13
 
 =head1 DESCRIPTION
 
@@ -73,7 +73,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
-
-__END__
-

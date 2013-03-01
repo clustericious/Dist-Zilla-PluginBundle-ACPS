@@ -6,7 +6,7 @@ use Carp;
 use File::HomeDir;
 
 # ABSTRACT: generate RPM file for your dist
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 use Dist::Zilla::App -command;
 
@@ -32,8 +32,8 @@ sub execute {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -42,7 +42,7 @@ Dist::Zilla::App::Command::apbuild - generate RPM file for your dist
 
 =head1 VERSION
 
-version 0.11
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -58,4 +58,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-

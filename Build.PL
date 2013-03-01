@@ -20,7 +20,7 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda3.com>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-ACPS",
-  "dist_version" => "0.11",
+  "dist_version" => "0.13",
   "license" => "restrictive",
   "module_name" => "Dist::Zilla::PluginBundle::ACPS",
   "recommends" => {},
@@ -49,6 +49,7 @@ my %module_build_args = (
     "Dist::Zilla::Role::VersionProvider" => 0,
     "File::Copy" => 0,
     "File::HomeDir" => 0,
+    "File::ShareDir" => 0,
     "File::Spec" => 0,
     "File::Spec::Functions" => 0,
     "File::Temp" => 0,
