@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.13      2013-03-01 13:26:11 America/New_York
   - import File::ShareDir( dist_dir) where we need it
 
 0.11      2013-03-01 11:06:47 America/New_York
