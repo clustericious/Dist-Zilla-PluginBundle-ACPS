@@ -18,7 +18,13 @@ use namespace::autoclean;
 
 has 'spec_template' => (
   is => 'ro',
-  default => sub { Dist::Zilla::MintingProfile::ACPS->profile_dir . '/default/dist.spec.tt' },
+  default => sub { 
+    Dist::Zilla::MintingProfile::ACPS
+      ->share_dir
+      ->subdir('rpm')
+      ->file('dist.spec.tt')
+      ->stringify;
+  },
 );
 
 has 'prefer_make_maker' => (

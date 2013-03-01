@@ -6,6 +6,7 @@ use Dist::Zilla;
 use Dist::Zilla::Plugin::PodWeaver;
 use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::OurPkgVersion;
+use Path::Class qw( file dir );
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
 # VERSION
@@ -60,6 +61,34 @@ sub configure {
     ($self->is_legacy ? () : ('ACPS::Git::CommitBuild')),
     ['ACPS::Release', { legacy => $self->is_legacy } ],
   );
+}
+
+sub share_dir
+{
+  my($class) = @_;
+  
+  state $dir;
+  
+  unless(defined $dir)
+  {
+    if(defined $ENV{DIST_ZILLA_PLUGINBUNDLE_ACPS})
+    { $dir = dir( $ENV{DIST_ZILLA_PLUGINBUNDLE_ACPS} ) }
+    elsif(defined $Dist::Zilla::PluginBundle::ACPS::VERSION)
+    { $dir = dir(dist_dir('Dist-Zilla-PluginBundle-ACPS')) }
+    else
+    { 
+      $dir = file(__FILE__)
+        ->absolute
+        ->dir
+        ->parent
+        ->parent
+        ->parent
+        ->parent
+        ->subdir('share');
+    }
+  }
+  
+  return $dir;
 }
 
 __PACKAGE__->meta->make_immutable;

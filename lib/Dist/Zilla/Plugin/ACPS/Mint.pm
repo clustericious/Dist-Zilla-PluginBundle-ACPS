@@ -1,4 +1,4 @@
-package Dist::Zilla::Plugin::ACPS::Init;
+package Dist::Zilla::Plugin::ACPS::Mint;
 
 use Moose;
 use v5.10;
