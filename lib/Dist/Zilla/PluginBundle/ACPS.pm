@@ -7,6 +7,7 @@ use Dist::Zilla::Plugin::PodWeaver;
 use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::OurPkgVersion;
 use Path::Class qw( file dir );
+use File::ShareDir qw( dist_dir );
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
 # VERSION
