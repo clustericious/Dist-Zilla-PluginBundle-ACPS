@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::ACPS::Release;
 
 # ABSTRACT: release plugin for ACPS
-our $VERSION = '0.14'; # VERSION
+our $VERSION = '0.15'; # VERSION
 
 use Moose;
 use v5.10;
@@ -67,6 +67,8 @@ sub after_release
   
   if(!$self->legacy)
   {
+    $self->log("update Changes");
+    $git->commit({ message => "update Changes" }, 'Changes');
     $self->log("push");
     $git->push("public");
     $git->push("public", "release");
@@ -96,7 +98,7 @@ Dist::Zilla::Plugin::ACPS::Release - release plugin for ACPS
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 

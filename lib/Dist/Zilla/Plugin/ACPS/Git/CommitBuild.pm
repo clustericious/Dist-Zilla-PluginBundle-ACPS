@@ -11,7 +11,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::ACPS::Git::CommitBuild;
-our $VERSION = '0.14'; # VERSION
+our $VERSION = '0.15'; # VERSION
 # ABSTRACT: checkin build results on separate branch
 
 use Git::Wrapper 0.021;
@@ -151,7 +151,7 @@ Dist::Zilla::Plugin::ACPS::Git::CommitBuild - checkin build results on separate 
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 SYNOPSIS
 
