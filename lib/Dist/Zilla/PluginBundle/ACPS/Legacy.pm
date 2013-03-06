@@ -41,7 +41,7 @@ __END__
 =head1 DESCRIPTION
 
 This plugin bundle is identical to L<@ACPS|Dist::Zilla::PluginBundle::ACPS> except it does not include
-L<Manifest|Dist::Zilla::Plugin:::Manifest>,
+L<Manifest|Dist::Zilla::Plugin::Manifest>,
 L<MetaYAML|Dist::Zilla::Plugin::MetaYAML>,
 L<MetaJSON|Dist::Zilla::Plugin::MetaJSON>,
 L<Readme|Dist::Zilla::Plugin::Readme>,
