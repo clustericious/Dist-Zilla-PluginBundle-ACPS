@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - fixed use test
   - automatically update Changes after release
 
 0.14      2013-03-01 13:38:40 America/New_York
