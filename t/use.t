@@ -1,9 +1,10 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 14;
 
 use_ok 'Dist::Zilla::PluginBundle::ACPS';
 use_ok 'Dist::Zilla::PluginBundle::ACPS::Legacy';
+use_ok 'Dist::Zilla::PluginBundle::ACPS::MakeMaker';
 use_ok 'Dist::Zilla::App::Command::apinstall';
 use_ok 'Dist::Zilla::App::Command::apbuild';
 use_ok 'Dist::Zilla::App::Command::apspec';
@@ -14,3 +15,4 @@ use_ok 'Dist::Zilla::Plugin::ACPS::Legacy';
 use_ok 'Dist::Zilla::Plugin::ACPS::Release';
 use_ok 'Dist::Zilla::Plugin::ACPS::RPM';
 use_ok 'Dist::Zilla::MintingProfile::ACPS';
+pass 'okay';
