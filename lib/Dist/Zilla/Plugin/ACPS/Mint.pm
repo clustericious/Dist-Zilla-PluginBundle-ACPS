@@ -5,7 +5,7 @@ use v5.10;
 use Git::Wrapper;
 
 # ABSTRACT: init plugin for ACPS
-our $VERSION = '0.15'; # VERSION
+our $VERSION = '0.16'; # VERSION
 
 with 'Dist::Zilla::Role::AfterMint';
 
@@ -35,7 +35,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
+
 
 =pod
 
@@ -45,7 +45,7 @@ Dist::Zilla::Plugin::ACPS::Mint - init plugin for ACPS
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -62,3 +62,7 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
+
+
+__END__
+

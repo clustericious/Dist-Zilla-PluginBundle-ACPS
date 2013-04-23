@@ -10,7 +10,7 @@ use Path::Class qw( file dir );
 use File::ShareDir qw( dist_dir );
 
 # ABSTRACT: the basic plugins to maintain and release ACPS dists
-our $VERSION = '0.15'; # VERSION
+our $VERSION = '0.16'; # VERSION
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -96,7 +96,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
+
 
 =pod
 
@@ -106,7 +106,7 @@ Dist::Zilla::PluginBundle::ACPS - the basic plugins to maintain and release ACPS
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -146,3 +146,7 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
+
+
+__END__
+
