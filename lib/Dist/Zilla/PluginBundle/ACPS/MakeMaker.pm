@@ -4,7 +4,7 @@ use Moose;
 use v5.10;
 
 # ABSTRACT: Dist::Zilla ACPS bundle that uses MakeMaker instead of ModuleBuild
-our $VERSION = '0.16'; # VERSION
+our $VERSION = '0.17'; # VERSION
 
 extends 'Dist::Zilla::PluginBundle::ACPS';
 
@@ -21,7 +21,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
+__END__
 
 =pod
 
@@ -31,7 +31,7 @@ Dist::Zilla::PluginBundle::ACPS::MakeMaker - Dist::Zilla ACPS bundle that uses M
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 DESCRIPTION
 
@@ -48,7 +48,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
-
-__END__
-

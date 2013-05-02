@@ -58,6 +58,9 @@ EOF
 chmod +x %{__find_provides}
 
 %build
+if [ -d bin ]; then
+  release-fix_shebang bin/*
+fi
 [% IF rpm.prefer_make_maker == 0 %]
 if [ -e Build.PL ]; then
   perl Build.PL --install_path lib=%{acps_prefix}/lib/perl    \
@@ -102,6 +105,7 @@ elif [ -e Makefile.PL ]; then
 fi
 [% END %]
 rm -f %{buildroot}/perl/lib/perl/perllocal.pod
+rm -f %{buildroot}/usr/lib/perl/*/perllocal.pod
 find %{buildroot}/util -not -type d | sed -e 's#%{buildroot}##' > %{_tmppath}/filelist
 
 %clean

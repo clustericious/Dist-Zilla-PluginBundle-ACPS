@@ -4,7 +4,7 @@
       "Graham Ollis <gollis@sesda3.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.130880",
    "license" : [
       "restricted"
    ],
@@ -36,6 +36,7 @@
             "DateTime" : "0",
             "Dist::Zilla" : "0",
             "Dist::Zilla::MintingProfile::Clustericious" : "0",
+            "Dist::Zilla::Plugin::MinimumPerl" : "0",
             "Dist::Zilla::Plugin::OurPkgVersion" : "0",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
             "Dist::Zilla::PluginBundle::Git" : "0",
@@ -89,6 +90,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.16"
+   "version" : "0.17"
 }
 

@@ -11,7 +11,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::ACPS::Git::CommitBuild;
-our $VERSION = '0.16'; # VERSION
+our $VERSION = '0.17'; # VERSION
 # ABSTRACT: checkin build results on separate branch
 
 use Git::Wrapper 0.021;
@@ -141,8 +141,8 @@ sub _create_tree {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -151,7 +151,7 @@ Dist::Zilla::Plugin::ACPS::Git::CommitBuild - checkin build results on separate 
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 SYNOPSIS
 
@@ -177,4 +177,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
