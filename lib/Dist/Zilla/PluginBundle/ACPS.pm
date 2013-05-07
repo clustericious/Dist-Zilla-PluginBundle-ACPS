@@ -25,7 +25,6 @@ sub plugin_list {
     MetaJSON
     License
     Readme
-    ExtraTests
     ExecDir
     ModuleBuild
     Manifest
@@ -110,7 +109,6 @@ It is equivalent to this:
  [MetaJSON]
  [License]
  [Readme]
- [ExtraTests]
  [ExecDir]
  [ModuleBuild]
  [Manifest]
