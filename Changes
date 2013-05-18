@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Allow main repo to be set via environment
   - documentation tweaks
 
 0.18      2013-05-07 13:20:20 EST5EDT

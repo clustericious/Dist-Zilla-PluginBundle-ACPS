@@ -65,23 +65,25 @@ sub after_release
   
   my $git = Git::Wrapper->new($self->zilla->root);
   
+  my $repo = $ENV{ACPS_RELEASE_MAIN_REPO} // 'public';
+  
   if(!$self->legacy)
   {
     $self->log("update Changes");
     $git->commit({ message => "update Changes" }, 'Changes');
     $self->log("push");
-    $git->push("public");
-    $git->push("public", "release");
+    $git->push($repo);
+    $git->push($repo, "release");
     $self->log("push tags");
-    $git->push("public", "--tags");
-    $git->push("public", "--tags", "release");
+    $git->push($repo, "--tags");
+    $git->push($repo, "--tags", "release");
   }
   else
   {
     $self->log("push");
-    $git->push("public");
+    $git->push($repo);
     $self->log("push tags");
-    $git->push("public", "--tags");
+    $git->push($repo, "--tags");
   }
 }
 
