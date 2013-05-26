@@ -38,7 +38,7 @@ sub plugin_list {
   )
 }
 
-sub allow_dirty { [ 'Changes', 'dist.ini' ] };
+sub allow_dirty { [ 'Changes', 'dist.ini', 'README.pod' ] };
 
 sub mvp_multivalue_args { qw( allow_dirty ) }
 
