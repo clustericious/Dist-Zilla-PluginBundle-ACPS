@@ -1,6 +1,25 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.21      2013-05-25 23:22:24 America/New_York
+  - Allow README.pod to be dirty for release
+
+0.20      2013-05-17 20:19:57 America/New_York
+  - Allow main repo to be set via environment
+  - documentation tweaks
+
+0.18      2013-05-07 13:20:20 EST5EDT
+  - remove [ExtraTests] which we don't use
+
+0.17      2013-05-02 13:01:11 EST5EDT
+  - require [MinimumPerl]
+
+0.16      2013-04-23 16:35:01 America/New_York
+  - created [@ACPS::MakeMaker]
+  - fixed use test
+
+0.15      2013-03-01 13:58:47 America/New_York
   - automatically update Changes after release
 
 0.14      2013-03-01 13:38:40 America/New_York

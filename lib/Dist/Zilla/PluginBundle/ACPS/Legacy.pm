@@ -16,7 +16,6 @@ sub plugin_list {
     PruneCruft
     ManifestSkip
     License
-    ExtraTests
     ExecDir
 
     TestRelease

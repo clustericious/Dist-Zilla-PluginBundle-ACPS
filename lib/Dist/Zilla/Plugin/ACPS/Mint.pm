@@ -77,7 +77,6 @@ __END__
 
 =head1 DESCRIPTION
 
-Standard init plugin for ACPS distros.  May change in the future,
-but for now it creates a public git repo on acpsdev2.
+Standard init plugin for ACPS distros.
 
 =cut

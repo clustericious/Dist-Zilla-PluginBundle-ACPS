@@ -25,7 +25,6 @@ sub plugin_list {
     MetaJSON
     License
     Readme
-    ExtraTests
     ExecDir
     ModuleBuild
     Manifest
@@ -39,7 +38,7 @@ sub plugin_list {
   )
 }
 
-sub allow_dirty { [ 'Changes', 'dist.ini' ] };
+sub allow_dirty { [ 'Changes', 'dist.ini', 'README.pod' ] };
 
 sub mvp_multivalue_args { qw( allow_dirty ) }
 
@@ -110,7 +109,6 @@ It is equivalent to this:
  [MetaJSON]
  [License]
  [Readme]
- [ExtraTests]
  [ExecDir]
  [ModuleBuild]
  [Manifest]
