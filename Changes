@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - add .travis.yml to minted dist
 
 0.21      2013-05-25 23:22:24 America/New_York
   - Allow README.pod to be dirty for release
