@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - use [Author::Plicease::UploadToCPAN]
 
 0.22      2013-06-11 07:30:03 America/New_York
   - add .travis.yml to minted dist
