@@ -14,7 +14,9 @@ around plugin_list => sub {
   my $orig = shift;
   my $self = shift;
   
-  grep { (ref $_ ? $_->[0] : $_) !~ /^(Meta(YAML|JSON)|Readme|ModuleBuild|Manifest|PodWeaver|NextRelease|AutoPrereqs|OurPkgVersion)$/ } $self->$orig(@_);
+  my @list = grep { (ref $_ ? $_->[0] : $_) !~ /^(Meta(YAML|JSON)|Readme|ModuleBuild|Manifest|PodWeaver|NextRelease|AutoPrereqs|OurPkgVersion)$/ } $self->$orig(@_);
+  push @list, 'ACPS::Legacy';
+  @list;
 };
 
 sub is_legacy { 1 }
