@@ -10,22 +10,12 @@ extends 'Dist::Zilla::PluginBundle::ACPS';
 
 use namespace::autoclean;
 
-sub plugin_list {
-  qw(
-    GatherDir
-    PruneCruft
-    ManifestSkip
-    License
-    ExecDir
-
-    TestRelease
-    ConfirmRelease
-    ACPS::Legacy
-
-    PodVersion
-    OurPkgVersion
-  )
-}
+around plugin_list => sub {
+  my $orig = shift;
+  my $self = shift;
+  
+  grep { (ref $_ ? $_->[0] : $_) !~ /^(Meta(YAML|JSON)|Readme|ModuleBuild|Manifest|PodWeaver|NextRelease|AutoPrereqs|OurPkgVersion)$/ } $self->$orig(@_);
+};
 
 sub is_legacy { 1 }
 

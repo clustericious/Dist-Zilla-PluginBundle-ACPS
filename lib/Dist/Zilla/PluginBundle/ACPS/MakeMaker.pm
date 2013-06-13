@@ -14,7 +14,7 @@ around plugin_list => sub {
   my $orig = shift;
   my $self = shift;
   
-  map { s/^ModuleBuild$/MakeMaker/; $_ } $self->$orig(@_);
+  map { (ref $_ ? $_->[0] : $_) =~ s/^ModuleBuild$/MakeMaker/; $_ } $self->$orig(@_);
 };
 
 __PACKAGE__->meta->make_immutable;
