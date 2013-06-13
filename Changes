@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - don't prune .travis.yml from dist
 
 0.24      2013-06-12 09:47:26 America/New_York
   - modified default dist.ini (comments only)
