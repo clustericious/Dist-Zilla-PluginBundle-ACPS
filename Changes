@@ -1,8 +1,6 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.25      2013-06-13 12:36:00 America/New_York
   - don't prune .travis.yml from dist
 
 0.24      2013-06-12 09:47:26 America/New_York
