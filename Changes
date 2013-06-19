@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - don't generate debug packages when building rpms
 
 0.25      2013-06-14 17:25:03 America/New_York
   - don't prune .travis.yml from dist
