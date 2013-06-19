@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.26      2013-06-19 17:09:39 America/New_York
   - don't generate debug packages when building rpms
 
 0.25      2013-06-14 17:25:03 America/New_York
