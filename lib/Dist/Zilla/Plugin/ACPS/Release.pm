@@ -70,7 +70,14 @@ sub after_release
   if(!$self->legacy)
   {
     $self->log("update Changes");
-    $git->commit({ message => "update Changes" }, 'Changes');
+    if(-r 'README.pod')
+    {
+      $git->commit({ message => "update Changes + README.pod" }, 'Changes', 'README.pod');
+    }
+    else
+    {
+      $git->commit({ message => "update Changes" }, 'Changes');
+    }
     $self->log("push");
     $git->push($repo);
     $git->push($repo, "release");
