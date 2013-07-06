@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - commit README.pod after release if it is there
 
 0.26      2013-06-19 17:09:39 America/New_York
   - don't generate debug packages when building rpms
