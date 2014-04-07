@@ -47,7 +47,12 @@ sub is_legacy { 0 }
 sub configure {
   my($self) = @_;
 
-  $self->add_plugins($self->plugin_list);
+  $self->add_plugins(map { 
+    $_ ne 'ModuleBuild' ? $_ : do {
+      my %args = map { $_ => $self->payload->{$_} } grep /^mb_/, keys %{ $self->payload };
+      [ 'ModuleBuild' => \%args ],
+    }
+  }$self->plugin_list);
 
   my $allow_dirty = $self->allow_dirty;
   if(defined $self->payload->{allow_dirty})
