@@ -9,7 +9,7 @@ use Dist::Zilla::Plugin::OurPkgVersion;
 use Path::Class qw( file dir );
 use File::ShareDir qw( dist_dir );
 
-# ABSTRACT: the basic plugins to maintain and release ACPS dists
+# ABSTRACT: Basic plugins to maintain and release ACPS dists
 # VERSION
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
