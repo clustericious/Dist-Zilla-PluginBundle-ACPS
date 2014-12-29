@@ -1,5 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-ACPS
 
+0.29      2014-12-29 12:47:05 America/New_York
+  - miniting profile Clustericious is now optional, as it has been removed
+    from CPAN
+
 0.28      2014-04-07 11:47:43 America/New_York
   - [@ACPS] mb_ prefixed values are passed into [ModuleBuild], if present
 
