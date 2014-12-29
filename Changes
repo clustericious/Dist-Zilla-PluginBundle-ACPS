@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - rm dep on Dist::Zilla::MintingProfile::Clustericious
 
 0.28      2014-04-07 11:47:43 America/New_York
   - [@ACPS] mb_ prefixed values are passed into [ModuleBuild], if present
