@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - bump version to reintroduce to CPAN
 
 0.29      2014-12-29 12:47:05 America/New_York
   - miniting profile Clustericious is now optional, as it has been removed
