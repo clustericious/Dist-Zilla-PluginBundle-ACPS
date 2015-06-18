@@ -12,9 +12,6 @@ Requires: perl
 Requires: [% require %]
 [% END -%]
 BuildRequires: perl
-[% FOREACH require IN rpm.build_requires -%]
-BuildRequires: [% require %]
-[% END -%]
 BuildRoot: %{_tmppath}/%{name}-%{version}-BUILD
 %define acps_prefix /util
 Prefix: %{acps_prefix}
