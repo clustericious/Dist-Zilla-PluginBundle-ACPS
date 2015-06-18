@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::ACPS::RPM;
 
 use Moose;
-use v5.10;
+use 5.010001;
 use Dist::Zilla::MintingProfile::ACPS;
 use Dist::Zilla::PluginBundle::ACPS;
 use Path::Class qw( dir file );

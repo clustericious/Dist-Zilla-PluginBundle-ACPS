@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+use 5.001001;
 use Test::More tests => 2;
 use Dist::Zilla::PluginBundle::ACPS;
 use Dist::Zilla::PluginBundle::ACPS::MakeMaker;

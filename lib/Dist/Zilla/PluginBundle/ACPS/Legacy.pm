@@ -1,7 +1,7 @@
 package Dist::Zilla::PluginBundle::ACPS::Legacy;
 
 use Moose;
-use v5.10;
+use 5.010001;
 
 # ABSTRACT: Dist::Zilla ACPS bundle for dists not originally written with Dist::Zilla in mind
 # VERSION

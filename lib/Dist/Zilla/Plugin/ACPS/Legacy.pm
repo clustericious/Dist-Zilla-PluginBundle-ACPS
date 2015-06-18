@@ -1,9 +1,9 @@
 package Dist::Zilla::Plugin::ACPS::Legacy;
 
 use Moose;
-use v5.10;
+use 5.010001;
 use autodie;
-use JSON qw( from_json );
+use JSON::PP qw( decode_json );
 
 # ABSTRACT: Dist::Zilla plugin for ACPS CIs that are pre-Dist::Zilla
 # VERSION
@@ -39,7 +39,7 @@ sub register_prereqs
 {
   my $self = shift;
   
-  my $meta = eval { from_json($self->zilla->root->file('META.json')->slurp) };
+  my $meta = eval { decode_json($self->zilla->root->file('META.json')->slurp) };
   die "unable to load META.json, run ./Build distmeta to generate it: $@" if $@ or !defined $meta;
 
   foreach my $phase (qw( configure build runtime ))

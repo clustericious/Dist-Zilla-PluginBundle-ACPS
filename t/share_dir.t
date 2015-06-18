@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+use 5.001001;
 use Test::More tests => 1;
 use Dist::Zilla::PluginBundle::ACPS;
 use Path::Class qw( dir );

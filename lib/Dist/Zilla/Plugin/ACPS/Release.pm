@@ -1,11 +1,11 @@
 package Dist::Zilla::Plugin::ACPS::Release;
 
+use Moose;
+use 5.010001;
+use Git::Wrapper;
+
 # ABSTRACT: release plugin for ACPS
 # VERSION
-
-use Moose;
-use v5.10;
-use Git::Wrapper;
 
 with 'Dist::Zilla::Role::BeforeRelease';
 with 'Dist::Zilla::Role::Releaser';

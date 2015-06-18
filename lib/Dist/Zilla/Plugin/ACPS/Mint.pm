@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::ACPS::Mint;
 
 use Moose;
-use v5.10;
+use 5.010001;
 use Git::Wrapper;
 
 # ABSTRACT: init plugin for ACPS

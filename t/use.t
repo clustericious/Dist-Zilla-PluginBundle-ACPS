@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+use 5.001001;
 use Test::More tests => 10;
 
 use_ok 'Dist::Zilla::PluginBundle::ACPS';

@@ -1,7 +1,7 @@
 package Dist::Zilla::PluginBundle::ACPS::MakeMaker;
 
 use Moose;
-use v5.10;
+use 5.010001;
 
 # ABSTRACT: Dist::Zilla ACPS bundle that uses MakeMaker instead of ModuleBuild
 # VERSION

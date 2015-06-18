@@ -1,7 +1,7 @@
 package Dist::Zilla::MintingProfile::ACPS;
 
 use Moose;
-use v5.10;
+use 5.010001;
 use File::HomeDir;
 use File::Spec;
 use Dist::Zilla::PluginBundle::ACPS;

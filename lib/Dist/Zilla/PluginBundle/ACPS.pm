@@ -1,7 +1,7 @@
 package Dist::Zilla::PluginBundle::ACPS;
 
 use Moose;
-use v5.10;
+use 5.010001;
 use Dist::Zilla;
 use Dist::Zilla::Plugin::PodWeaver;
 use Dist::Zilla::PluginBundle::Git;
