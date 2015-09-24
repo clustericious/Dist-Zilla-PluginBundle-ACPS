@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - dzil apbuild now creates a per user filelist
 
 0.30      2015-01-06 09:14:11 America/New_York
   - bump version to reintroduce to CPAN
