@@ -34,6 +34,7 @@ Prefix: %{acps_prefix}
 %define _use_internal_dependency_generator 0
 %define __find_requires %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)-filter-requires
 %define __find_provides %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)-filter-provides
+%define myfilelist %{_tmppath}/filelist-%(%{__id_u} -n)
 
 %description
 <% $zilla->abstract %>
@@ -104,12 +105,12 @@ if [ -e Build.PL ]; then
 elif [ -e Makefile.PL ]; then
   make install DESTDIR=%{buildroot}
 fi
-find %{buildroot} -not -type d | sed -e 's#%{buildroot}##' > %{_tmppath}/filelist
+find %{buildroot} -not -type d | sed -e 's#%{buildroot}##' > %{myfilelist}
 
 %clean
 if [ "%{buildroot}" != "/" ] ; then
   rm -rf %{buildroot}
 fi
 
-%files -f %{_tmppath}/filelist
+%files -f %{myfilelist}
 %defattr(-,root,root)
