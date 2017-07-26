@@ -7,7 +7,7 @@ use Dist::Zilla::PluginBundle::ACPS;
 use Path::Class qw( dir file );
 use File::HomeDir;
 use File::Copy qw( copy );
-use List::MoreUtils qw( uniq );
+use List::Util qw( uniq );
 use Template;
 
 # ABSTRACT: RPM Dist::Zilla plugin for ACPS
